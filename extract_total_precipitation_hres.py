@@ -23,7 +23,6 @@ def FtpConnectionFilesGathering():
     for file in ftp.nlst():
         filename, file_extension = os.path.splitext(file)
         if file_extension == '' and len(file) == 20:
-
             lista_files_ECMWF.append(filename)
     ftp.close()
 
@@ -108,7 +107,6 @@ def CreateGeoTiffFromSelectedBand(Name, Array, driver, NDV, xsize, ysize, GeoT, 
         DataSet.GetRasterBand(1).SetNoDataValue(NDV)
     else:
         print "No Data None"
-
     return NewFileName
 
 

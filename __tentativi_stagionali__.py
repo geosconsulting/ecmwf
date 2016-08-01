@@ -300,9 +300,9 @@ def genera_statistiche_banda_grib(banda, indice):
 
 dict = {'ymax': '15', 'xmin': '-90','ymin': '-20', 'xmax': '-65'}
 
-# fetch_ECMWF_data("c:/temp/tt1.grib",'dates/req_0817_12_19732012.txt',dict)
+# fetch_ECMWF_data_extent("c:/temp/tt1.grib",'dates/req_0817_12_19732012.txt',dict)
 
-# fetch_ECMWF_data("gribs/probabilities/prob_test.grib", "dates/req_20131205.txt", dict)
+# fetch_ECMWF_data_extent("gribs/probabilities/prob_test.grib", "dates/req_20131205.txt", dict)
 
 fetch_ECMWF_ReForecast("realtime_reforecast/ref_test.grib")
 

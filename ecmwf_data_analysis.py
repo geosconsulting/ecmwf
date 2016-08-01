@@ -22,7 +22,30 @@ def Shp_BBox(file_shp):
 
     return laProiezioneDelVettore, laBoundingBox
 
-def fetch_ECMWF_data(file_output, time_frame, dict_area_richiesta):
+
+def fetch_ECMWF_data_global(file_output, time_frame):
+
+    date = open(time_frame)
+    time_frame_json = json.load(date)
+
+    server.retrieve({
+        "class": "ei",
+        "dataset": "interim",
+        "date": time_frame_json,
+        "expver": "1",
+        "grid": "0.125/0.125",
+        "levtype": "sfc",
+        "param": "228.128",
+        "step": "24",
+        "stream": "oper",
+        "target": file_output,
+        "time": "12",
+        "type": "fc",
+    })
+
+    return "Grib file generated in" + file_output + "\n"
+
+def fetch_ECMWF_data_extent(file_output, time_frame, dict_area_richiesta):
 
     date = open(time_frame)
     time_frame_json = json.load(date)
@@ -34,25 +57,6 @@ def fetch_ECMWF_data(file_output, time_frame, dict_area_richiesta):
     area_ecmwf_bbox = str(north) + "/" + str(west) + "/" + str(south) + "/" + str(east)
 
     print area_ecmwf_bbox
-
-    # request WFP UN MESE ERA-Interim, Daily
-    # server.retrieve({
-    #     "class": "ei",
-    #     "dataset": "interim",
-    #     "date": time_frame_json,
-    #     # "date": "1979-02-18/to/2014-02-25",
-    #     "expver": "1931",
-    #     "grid": "0.125/0.125",
-    #     "levtype": "sfc",
-    #     "param": "228.128",
-    #     "step": "0",
-    #     "stream": "mdfa",
-    #     "area": area_ecmwf_bbox,
-    #     "target": file_output,
-    #     "time": "12",
-    #     # "time": "00/06/12/18",
-    #     "type": "fc",
-    # })
 
     server.retrieve({
         "class": "ei",
@@ -198,7 +202,7 @@ def genera_gribs(file_date, area_bbox, raster_file):
     # print time_frame
     # # proiezione, area_richiesta = Shp_BBox(vector_file)
     # area_richiesta = area_bbox
-    # fetch_ECMWF_data(raster_file, time_frame, area_richiesta)
+    # fetch_ECMWF_data_extent(raster_file, time_frame, area_richiesta)
     pass
 
 def genera_means(file_path, parte_iso, parte_date):
@@ -241,7 +245,6 @@ def genera_means(file_path, parte_iso, parte_date):
             return str(err.message) + + "\n"
 
 def genera_means_ciclo10(file_path, parte_iso, parte_date, anni):
-
 
         print "ECMWF file exists calculating statistics"
 
@@ -350,7 +353,7 @@ def analisi_raster_con_GDALNUMERICS(grib_file):
 # dict = {'ymax': '40', 'xmin': '-20', 'ymin': '-40', 'xmax': '60'}
 # dict = {'ymax': '38', 'xmin': '-26', 'ymin': '-35', 'xmax': '60'}
 #
-# # fetch_ECMWF_data("0_gribs_from_ecmwf/ellolo.grib", 'dates/req_2607_02_03_19792015.txt', dict)
+# # fetch_ECMWF_data_extent("0_gribs_from_ecmwf/ellolo.grib", 'dates/req_2607_02_03_19792015.txt', dict)
 #
 
 # fetch_ECMWF_data_manuale('dates/req_2231_03_19792016.txt', dict)
@@ -385,5 +388,5 @@ def analisi_raster_con_GDALNUMERICS(grib_file):
 #
 
 #grib_file = "0_gribs_from_ecmwf/historical/BurDjiEriEthSomSouUgaRwaTan_2706_04_05_19792016.grib"
-#genera_means_ciclo10(grib_file, "eas_afr", "2503_0405_19792015", anni)
+#cumulated_means_10days(grib_file, "eas_afr", "2503_0405_19792015", anni)
 # fetch_ECMWF_data_manuale('dates/req_2505_0405_19792016.txt', dict)

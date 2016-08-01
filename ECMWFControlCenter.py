@@ -12,6 +12,7 @@ import os
 import calculate_time_window_date
 import ecmwf_data_analysis
 import extract_total_precipitation_hres
+import wfp_data_analysis_anomalies
 
 class AppECMWF:
 
@@ -75,18 +76,36 @@ class AppECMWF:
         self.box_adm0 = ttk.Combobox(finestra, textvariable=self.box_value_adm0)
         self.box_adm0['values'] = self.lista_paesi
         self.box_adm0.current(0)
-        self.box_adm0.place(x=10, y=2, width=250, height=25)
+        self.box_adm0.place(x=10, y=2, width=200, height=25)
 
         self.listbox = Listbox(finestra)
         self.listbox.place(x=450, y=170, width=155, height=175)
 
         self.button_add_countries = Button(finestra, text="Add Country", fg="blue", command=self.aggiungi_paese_alla_lista_di_processo)
-        self.button_add_countries.place(x=260, y=3, width=80, height=25)
+        self.button_add_countries.place(x=210, y=3, width=80, height=25)
 
-        self.button_latest_forecasts = Button(finestra, text="Calculate Mean of Forecasts", fg="red", command = self.calcola_mean_from_historical_forecasts)
-        self.button_latest_forecasts.place(x=340, y=3, width=160, height=25)
+        def attiva_disattiva():
 
-        self.button_avg_forecasts = Button(finestra, text="Get Latest Forecast", fg="red", command=self.extract_precipitation_from_last_forecast)
+            attivo_nonAttivo = self.global_mean.get()
+            if attivo_nonAttivo == 0:
+                self.box_adm0.config(state='normal')
+                self.button_add_countries.config(state='normal')
+            else:
+                self.box_adm0.config(state='disabled')
+                self.button_add_countries.config(state='disabled')
+
+        self.global_mean = IntVar()
+        self.check_global_calculation = Checkbutton(finestra,
+                                                    text="Global Mean",
+                                                    variable=self.global_mean,
+                                                    command=attiva_disattiva)
+        self.check_global_calculation.place(x=300, y=5)
+
+
+        self.button_latest_forecasts = Button(finestra, text="Calculate Mean", fg="blue", command = self.calcola_mean_from_historical_forecasts)
+        self.button_latest_forecasts.place(x=400, y=3, width=100, height=25)
+
+        self.button_avg_forecasts = Button(finestra, text="Extract Latest", fg="red", command=self.extract_precipitation_from_last_forecast)
         self.button_avg_forecasts.place(x=500, y=3, width=110, height=25)
 
         self.area_oggi = Entry(finestra, background="white", foreground="red",)
@@ -123,10 +142,12 @@ class AppECMWF:
         self.box_maxYear_current['values'] = lista_anni_correnti
         self.box_maxYear_current.place(x=450, y=150, width=155)
 
-        self.button_anomalies = Button(finestra, text="Generate Anomaly Raster", fg="red", command = self.calcola_bbox_parteISO)
+        self.button_anomalies = Button(finestra, text="Generate Anomaly Raster", fg="red",
+                                       command= self.calcola_bbox_parteISO)
         self.button_anomalies.place(x=450, y=350, width=150, height=25)
 
         finestra.mainloop()
+
 
     def aggiungi_paese_alla_lista_di_processo(self):
 
@@ -174,33 +195,50 @@ class AppECMWF:
         salto = self.days_check.get()
 
         range_anni_scelti = range(int(anno_minimo), int(anno_massimo)+1)
-        date_per_creazione_files = calculate_time_window_date.controlla_date(anno_minimo, self.mese_inizio, self.giorno_inizio, salto)
+        date_per_creazione_files = calculate_time_window_date.controlla_date(anno_minimo,
+                                                                             self.mese_inizio,
+                                                                             self.giorno_inizio,
+                                                                             salto)
         file_date = calculate_time_window_date.crea_file_avanzato(range_anni_scelti, date_per_creazione_files)
 
-        #Calcola il bbox chiamando la funzione subito sopra questa
-        self.calcola_bbox_parteISO()
+        if self.global_mean.get()==1:
 
-        parte_iso = ''.join(self.parte_3lettere_per_file_grib)
-        parte_date = file_date.split(".")[0].split("req")[1]
-        
-        
-        raster_file = "1_gribs_from_ecmwf/" + parte_iso + parte_date + ".grib"
-        if os.path.isfile(raster_file):
-            self.area_messaggi.insert(INSERT, "Grib file exists")
-            self.area_messaggi.insert(INSERT, ecmwf_data_analysis.genera_means(raster_file))
-        else:
-            self.area_messaggi.insert(INSERT, "Grib file does not exist")
-            ecmwf_data_analysis.fetch_ECMWF_data(raster_file, file_date, self.dict_coords)
-            self.area_messaggi.insert(INSERT, ecmwf_data_analysis.genera_means(raster_file, parte_iso, parte_date))
+            parte_iso = 'GLOBAL'
+            parte_date = file_date.split(".")[0].split("req")[1]
+
+            raster_file = "1_gribs_from_ecmwf/" + parte_iso + parte_date + ".grib"
+            if os.path.isfile(raster_file):
+                self.area_messaggi.insert(INSERT, "Grib file exists")
+                self.area_messaggi.insert(INSERT, ecmwf_data_analysis.genera_means(raster_file))
+            else:
+                self.area_messaggi.insert(INSERT, "Grib file does not exist")
+                ecmwf_data_analysis.fetch_ECMWF_data_global(raster_file, file_date)
+                self.area_messaggi.insert(INSERT, ecmwf_data_analysis.genera_means(raster_file, parte_iso, parte_date))
+
+        elif self.global_mean.get()==0:
+            # Calcola il bbox chiamando la funzione subito sopra questa
+            self.calcola_bbox_parteISO()
+
+            parte_iso = ''.join(self.parte_3lettere_per_file_grib)
+            parte_date = file_date.split(".")[0].split("req")[1]
+
+            raster_file = "1_gribs_from_ecmwf/" + parte_iso + parte_date + ".grib"
+            if os.path.isfile(raster_file):
+                self.area_messaggi.insert(INSERT, "Grib file exists")
+                self.area_messaggi.insert(INSERT, ecmwf_data_analysis.genera_means(raster_file))
+            else:
+                self.area_messaggi.insert(INSERT, "Grib file does not exist")
+                ecmwf_data_analysis.fetch_ECMWF_data_extent(raster_file, file_date, self.dict_coords)
+                self.area_messaggi.insert(INSERT, ecmwf_data_analysis.genera_means(raster_file, parte_iso, parte_date))
 
     def extract_precipitation_from_last_forecast(self):
 
         self.listbox.delete(0, END)
-
         messaggioFTP, files_disponibili = extract_total_precipitation_hres.FtpConnectionFilesGathering()
-
-        stringhe_da_cercare = calculate_time_window_date.controlla_date_ftp(self.box_minYear_current.get(), str(self.mese_inizio), self.giorno_inizio, self.days_check.get())
-
+        stringhe_da_cercare = calculate_time_window_date.controlla_date_ftp(self.box_minYear_current.get(),
+                                                                            str(self.mese_inizio),
+                                                                            self.giorno_inizio,
+                                                                            self.days_check.get())
 
         if len(files_disponibili) > 0:
             self.area_messaggi.insert(INSERT, messaggioFTP)
