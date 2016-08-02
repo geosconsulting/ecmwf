@@ -79,6 +79,8 @@ def controlla_date_ftp(anno_inizio, mese_inizio, giorno_inizio, salto):
     mese_data_inziale = '{:02d}'.format(data_iniziale.month)
     mese_data_finale = '{:02d}'.format(data_finale.month)
 
+    print giorno_data_iniziale,mese_data_inziale,giorno_data_finale,mese_data_finale
+
     return giorno_data_iniziale, mese_data_inziale, giorno_data_finale, mese_data_finale
 
 def crea_file(anno_minimo, numero_anni, mese, giorno_inizio, giorno_fine):
