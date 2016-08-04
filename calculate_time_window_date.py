@@ -71,7 +71,7 @@ def controlla_date_ftp(anno_inizio, mese_inizio, giorno_inizio, salto):
     data_iniziale = datetime.date(int(anno_inizio), int(mese_inizio), int(giorno_inizio))
 
     # DA RIMUOVERE PASSATO FEBBRAIO
-    salto_giorni = datetime.timedelta(days=salto-1)
+    salto_giorni = datetime.timedelta(days=salto)
     data_finale = data_iniziale + salto_giorni
 
     giorno_data_iniziale = '{:02d}'.format(data_iniziale.day)
@@ -79,7 +79,7 @@ def controlla_date_ftp(anno_inizio, mese_inizio, giorno_inizio, salto):
     mese_data_inziale = '{:02d}'.format(data_iniziale.month)
     mese_data_finale = '{:02d}'.format(data_finale.month)
 
-    print giorno_data_iniziale,mese_data_inziale,giorno_data_finale,mese_data_finale
+    # print giorno_data_iniziale,mese_data_inziale,giorno_data_finale,mese_data_finale
 
     return giorno_data_iniziale, mese_data_inziale, giorno_data_finale, mese_data_finale
 

@@ -12,7 +12,7 @@ import os
 import calculate_time_window_date
 import ecmwf_data_analysis
 import extract_total_precipitation_hres
-import wfp_data_analysis_anomalies
+import wfp_data_analysis_anomalies_r1
 
 class AppECMWF:
 
@@ -94,12 +94,12 @@ class AppECMWF:
                 self.box_adm0.config(state='disabled')
                 self.button_add_countries.config(state='disabled')
 
-        self.global_mean = IntVar()
-        self.check_global_calculation = Checkbutton(finestra,
-                                                    text="Global Mean",
-                                                    variable=self.global_mean,
-                                                    command=attiva_disattiva)
-        self.check_global_calculation.place(x=300, y=5)
+        # self.global_mean = IntVar()
+        # self.check_global_calculation = Checkbutton(finestra,
+        #                                             text="Global Mean",
+        #                                             variable=self.global_mean,
+        #                                             command=attiva_disattiva)
+        # self.check_global_calculation.place(x=300, y=5)
 
 
         self.button_latest_forecasts = Button(finestra, text="Calculate Mean", fg="blue", command = self.calcola_mean_from_historical_forecasts)
@@ -143,7 +143,7 @@ class AppECMWF:
         self.box_maxYear_current.place(x=450, y=150, width=155)
 
         self.button_anomalies = Button(finestra, text="Generate Anomaly Raster", fg="red",
-                                       command= self.calcola_bbox_parteISO)
+                                       command= self.taglia_e_sottrai)
         self.button_anomalies.place(x=450, y=350, width=150, height=25)
 
         finestra.mainloop()
@@ -153,6 +153,7 @@ class AppECMWF:
 
         paese = self.box_value_adm0.get()
         self.listbox.insert(END, paese)
+
 
     def calcola_bbox_parteISO(self):
 
@@ -188,6 +189,7 @@ class AppECMWF:
 
         self.area_messaggi.insert(INSERT, self.dict_coords)
 
+
     def calcola_mean_from_historical_forecasts(self):
 
         anno_minimo = self.box_minYear_current.get()
@@ -199,37 +201,29 @@ class AppECMWF:
                                                                              self.mese_inizio,
                                                                              self.giorno_inizio,
                                                                              salto)
+
         file_date = calculate_time_window_date.crea_file_avanzato(range_anni_scelti, date_per_creazione_files)
 
-        if self.global_mean.get()==1:
 
-            parte_iso = 'GLOBAL'
-            parte_date = file_date.split(".")[0].split("req")[1]
+        # Calcola il bbox chiamando la funzione subito sopra questa
+        self.calcola_bbox_parteISO()
 
-            raster_file = "1_gribs_from_ecmwf/" + parte_iso + parte_date + ".grib"
-            if os.path.isfile(raster_file):
-                self.area_messaggi.insert(INSERT, "Grib file exists")
-                self.area_messaggi.insert(INSERT, ecmwf_data_analysis.genera_means(raster_file))
-            else:
-                self.area_messaggi.insert(INSERT, "Grib file does not exist")
-                ecmwf_data_analysis.fetch_ECMWF_data_global(raster_file, file_date)
-                self.area_messaggi.insert(INSERT, ecmwf_data_analysis.genera_means(raster_file, parte_iso, parte_date))
+        parte_iso = ''.join(self.parte_3lettere_per_file_grib)
+        parte_date = file_date.split(".")[0].split("req")[1]
 
-        elif self.global_mean.get()==0:
-            # Calcola il bbox chiamando la funzione subito sopra questa
-            self.calcola_bbox_parteISO()
+        self.raster_file_mean_grib = "1_gribs_from_ecmwf/" + parte_iso + parte_date + ".grib"
+        if os.path.isfile(self.raster_file_mean_grib):
+            self.area_messaggi.insert(INSERT, "Grib file exists")
+            self.file_media = ecmwf_data_analysis.genera_means(self.raster_file_mean_grib)
+            self.area_messaggi.insert(INSERT, "File Mean Generated in %s " % self.file_media)
+        else:
+            self.area_messaggi.insert(INSERT, "Grib file does not exist")
+            ecmwf_data_analysis.fetch_ECMWF_data_extent(self.raster_file_mean_grib, file_date, self.dict_coords)
+            self.file_media = ecmwf_data_analysis.genera_means(self.raster_file_mean_grib,
+                                                                                   parte_iso,
+                                                                                   parte_date)
+            self.area_messaggi.insert(INSERT,"File Mean Generated in %s " % self.file_media)
 
-            parte_iso = ''.join(self.parte_3lettere_per_file_grib)
-            parte_date = file_date.split(".")[0].split("req")[1]
-
-            raster_file = "1_gribs_from_ecmwf/" + parte_iso + parte_date + ".grib"
-            if os.path.isfile(raster_file):
-                self.area_messaggi.insert(INSERT, "Grib file exists")
-                self.area_messaggi.insert(INSERT, ecmwf_data_analysis.genera_means(raster_file))
-            else:
-                self.area_messaggi.insert(INSERT, "Grib file does not exist")
-                ecmwf_data_analysis.fetch_ECMWF_data_extent(raster_file, file_date, self.dict_coords)
-                self.area_messaggi.insert(INSERT, ecmwf_data_analysis.genera_means(raster_file, parte_iso, parte_date))
 
     def extract_precipitation_from_last_forecast(self):
 
@@ -261,13 +255,59 @@ class AppECMWF:
 
             ecmwf_dir = "3_ecmwf_ftp_wfp/"
             file_ftp = ecmwf_dir + file_scelto
-            nome_file_estratto_TP = "3_ecmwf_ftp_wfp/TP_" + stringa1 + stringa2
+            self.nome_file_estratto_TP = "3_ecmwf_ftp_wfp/TP_" + stringa1 + stringa2 + '.tif'
 
             extract_total_precipitation_hres.FtpConnectionFilesRetrieval(ecmwf_dir, file_scelto)
-            extract_total_precipitation_hres.EstrazioneBandaTP_hres(file_ftp, nome_file_estratto_TP)
+            extract_total_precipitation_hres.EstrazioneBandaTP_hres(file_ftp, self.nome_file_estratto_TP)
         else:
             tkMessageBox.showinfo("Warning", "No ECMWF files on server!!")
             pass
+
+
+    def taglia_e_sottrai(self):
+
+        file_current = self.nome_file_estratto_TP
+        file_climate = self.file_media
+        self.area_messaggi.insert(INSERT, "File Current %s " % file_current)
+        self.area_messaggi.insert(INSERT, "File Climate %s " % file_climate)
+
+        minX_clim_ar, maxY_clim_ar, maxX_clim_ar, minY_clim_ar = wfp_data_analysis_anomalies_r1.coordinate_immagini(file_climate)
+        print "Le coordinate di %s \nsono left %0.4f bottom %0.4f right %0.4f top %0.4f" %(
+                    file_climate, minX_clim_ar, minY_clim_ar, maxX_clim_ar, maxY_clim_ar)
+
+        larghezza,altezza = wfp_data_analysis_anomalies_r1.misura_immagini(file_climate)
+        print "Le dimensioni della immagine %s \nsono larghezza %d altezza %d" % (file_climate,
+                                                                                      larghezza,
+                                                                                      altezza)
+
+        print
+        minX, maxY, maxX, minY = wfp_data_analysis_anomalies_r1.coordinate_immagini(file_current)
+        print "Le coordinate di %s \nsono left %0.4f bottom %0.4f right %0.4f top %0.4f" % (file_current,
+                                                                                                minX,
+                                                                                                minY,
+                                                                                                maxX,
+                                                                                                maxY)
+
+        larghezza, altezza = wfp_data_analysis_anomalies_r1.misura_immagini(file_current)
+        print "Le dimensioni della immagine %s \nsono larghezza %d altezza %d" % (file_current, larghezza, altezza)
+
+        ulY, lrY, lrX, ulX = wfp_data_analysis_anomalies_r1.coordinate_da_tagliare_sul_raster_precipitazione_globale(file_current,
+                                                                                                                         minX_clim_ar,
+                                                                                                                         maxY_clim_ar,
+                                                                                                                         maxX_clim_ar,
+                                                                                                                         minY_clim_ar)
+        print
+        print "Le coordinate di taglio per  %s inviate sono ulX %0.4f lrY %0.4f lrX %0.4f ulY %0.4f" % (
+                        file_climate, minX_clim_ar, minY_clim_ar, maxX_clim_ar, maxY_clim_ar )
+        print "Le coordinate di taglio derivate da %s \nsono ulX %0.4f lrY %0.4f lrX %0.4f ulY %0.4f" % (
+                file_climate, ulY, lrY, lrX, ulX)
+
+        wfp_data_analysis_anomalies_r1.taglio_raster_corrente_su_area_mean_partial(file_current,
+                                                                                    ulY,
+                                                                                    lrY,
+                                                                                    lrX,
+                                                                                    ulX,
+                                                                                    file_climate)
 
 
 root = Tk()

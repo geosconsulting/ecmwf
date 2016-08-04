@@ -240,7 +240,7 @@ def genera_means(file_path, parte_iso, parte_date):
 
         try:
             gdalnumeric.BandWriteArray(banda_dove_scrivere_raster_mean, mean_bande_in_mm)
-            return "Mean raster exported in" + nome_tif_mean + "\n"
+            return nome_tif_mean
         except IOError as err:
             return str(err.message) + + "\n"
 
@@ -324,69 +324,3 @@ def analisi_raster_con_GDALNUMERICS(grib_file):
         #     print metadati
 
     return x_size, y_size, numero_bande
-
-# if __name__ == '__main__':
-
-    # if len(sys.argv) < 1:
-    #     Usage()
-    #     sys.exit(1)
-    #
-    # vector_file = "c:/sparc/input_data/countries/" + sys.argv[1] + ".shp"
-    # paese = vector_file.split(".")[0].split("/")[-1]
-
-    # ritornato = calculate_time_window_date.scateniamo_l_inferno(paese)
-    # parte_date = ritornato.split("/")[1].split(".")[0][4:]
-    # tre_lettere = vector_file.split(".")[0].split("/")[-1][0:3]
-    # raster_file = "gribs/historical/" + tre_lettere + parte_date + ".grib"
-    # print raster_file
-    #
-    # if os.path.isfile(raster_file):
-    #     print "grib esiste"
-    #     genera_means(raster_file)
-    # else:
-    #     print "grib non esiste"
-    #     genera_gribs(ritornato, vector_file, raster_file)
-    #     genera_means(raster_file)
-    #
-
-# FOCUS ON AFRICA
-# dict = {'ymax': '40', 'xmin': '-20', 'ymin': '-40', 'xmax': '60'}
-# dict = {'ymax': '38', 'xmin': '-26', 'ymin': '-35', 'xmax': '60'}
-#
-# # fetch_ECMWF_data_extent("0_gribs_from_ecmwf/ellolo.grib", 'dates/req_2607_02_03_19792015.txt', dict)
-#
-
-# fetch_ECMWF_data_manuale('dates/req_2231_03_19792016.txt', dict)
-
-# fetch_ECMWF_data_manuale('dates/req_1524_03_19792016.txt', dict)
-# fetch_ECMWF_46giorni(dict)
-
-#
-# grib_file = "0_gribs_from_ecmwf/historical/afr_s24_th12_mar_2131.grib"
-# grib_file = "0_gribs_from_ecmwf/historical/afr_s24_th12_mar_2231_240.grib"
-
-# grib_file = "frcst_46gg_21Mar.grib"
-# numero_bande = analisi_raster_con_GDALNUMERICS(grib_file)[2]
-
-# for numero_banda in range(1, numero_bande):
-#     print "Sto lavorando sulla banda %d" % numero_banda
-#     grib_file_aperto = gdal.Open(grib_file, GA_ReadOnly)
-#     banda = grib_file_aperto.GetRasterBand(numero_banda)
-#     genera_statistiche_banda_grib(banda, numero_banda)
-
-# print numero_bande
-
-# raster_file = "0218_0225.grib"
-# genera_means(raster_file, "fji", "1825_02_19792015")
-#anni = []
-#for anno in range(1979, 2016):
-#      # if anno != 2012:
-#      anni.append(anno)
-#
-# print anni
-# # print len(anni)
-#
-
-#grib_file = "0_gribs_from_ecmwf/historical/BurDjiEriEthSomSouUgaRwaTan_2706_04_05_19792016.grib"
-#cumulated_means_10days(grib_file, "eas_afr", "2503_0405_19792015", anni)
-# fetch_ECMWF_data_manuale('dates/req_2505_0405_19792016.txt', dict)

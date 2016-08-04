@@ -94,7 +94,7 @@ def CreateGeoTiffFromSelectedBand(Name, Array, driver, NDV, xsize, ysize, GeoT, 
     elif DataType == 'Float64':
         DataType == gdal.GDT_Float64
 
-    NewFileName = Name + '.tif'
+    NewFileName = Name
     # Set nans to the original No Data Value
     Array[np.isnan(Array)] = NDV
     # Set up the dataset
@@ -111,9 +111,6 @@ def CreateGeoTiffFromSelectedBand(Name, Array, driver, NDV, xsize, ysize, GeoT, 
 
 
 def EstrazioneBandaTP_hres(FileName, name_TP_tif_file):
-
-    # FileName = "ecmwf_ftp_wfp/A1D12020000121200001.grib"
-    # name_TP_tif_file = "ecmwf_ftp_wfp/TP_0212_2"
 
     DataSet = gdal.Open(FileName, GA_ReadOnly)
     # Get the first (and only) band.
@@ -139,5 +136,3 @@ def EstrazioneBandaTP_hres(FileName, name_TP_tif_file):
 
     CreateGeoTiffFromSelectedBand(name_TP_tif_file, DataTP, driver, NDV, xsize, ysize, GeoT, Projection, DataTypeTPInt)
 
-# print FtpConnectionFilesGatheringIMERG()
-# EstrazioneBandaTP_hres("ecmwf_ftp_wfp/18Jan_Rogerio/A1D01180000012800001.grib","ecmwf_ftp_wfp/18Jan_Rogerio/0118_0128_2016")
