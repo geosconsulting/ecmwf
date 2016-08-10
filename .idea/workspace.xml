@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1e8c4815-f81c-40f6-aa0d-f2cdbbb4ea02" name="Default" comment="Attivato il taglio per paesi. Taglia adeaguatamente il file con la precipitazione TOTAL con le coordinate del piccolo raster generato per il paesi di interesse.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/5_tests/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/5_tests/wfp_data_analysis_anomalies_r1.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/wfp_data_analysis_anomalies.py" afterPath="$PROJECT_DIR$/5_tests/wfp_data_analysis_anomalies.py" />
+    <list default="true" id="1e8c4815-f81c-40f6-aa0d-f2cdbbb4ea02" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test_global.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wfp_data_analysis_anomalies.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ECMWFControlCenter.py" afterPath="$PROJECT_DIR$/ECMWFControlCenter.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GlobalAnomaliesProject.py" afterPath="$PROJECT_DIR$/GlobalAnomaliesProject.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calculate_time_window_date.py" afterPath="$PROJECT_DIR$/calculate_time_window_date.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ecmwf_data_analysis.py" afterPath="$PROJECT_DIR$/ecmwf_data_analysis.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extract_total_precipitation_hres.py" afterPath="$PROJECT_DIR$/extract_total_precipitation_hres.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wfp_data_analysis_anomalies_r1.py" afterPath="$PROJECT_DIR$/wfp_data_analysis_anomalies_r1.py" />
     </list>
     <ignored path="ecmwf.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,58 +34,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="wfp_data_analysis_anomalies_r1.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wfp_data_analysis_anomalies_r1.py">
+      <file leaf-file-name="GlobalAnomaliesProject.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/GlobalAnomaliesProject.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="190" column="0" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
+            <state relative-caret-position="368">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#122#937#0" expanded="false" />
-                <element signature="e#1009#3811#0" expanded="false" />
-                <element signature="e#3861#4375#0" expanded="false" />
-                <element signature="e#4494#6755#0" expanded="false" />
-                <element signature="e#6801#7608#0" expanded="false" />
+                <element signature="e#69#84#0" expanded="true" />
+                <element signature="e#1310#1565#0" expanded="false" />
+                <element signature="e#1599#1743#0" expanded="false" />
+                <element signature="e#1781#1975#0" expanded="false" />
+                <element signature="e#2144#2576#0" expanded="false" />
+                <element signature="e#2635#3674#0" expanded="false" />
+                <element signature="e#3722#5936#0" expanded="false" />
+                <element signature="e#8758#9245#0" expanded="false" />
+                <element signature="e#9312#9692#0" expanded="false" />
+                <element signature="e#9738#10269#0" expanded="false" />
+                <element signature="e#10318#11293#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ecmwf_data_analysis.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ecmwf_data_analysis.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="207" column="37" selection-start-line="207" selection-start-column="28" selection-end-line="207" selection-end-column="37" />
-              <folding>
-                <element signature="e#8117#11080#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ECMWFControlCenter.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ECMWFControlCenter.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="632">
-              <caret line="311" column="0" selection-start-line="311" selection-start-column="0" selection-end-line="311" selection-end-column="0" />
-              <folding>
-                <element signature="e#69#90#0" expanded="true" />
-                <element signature="e#1287#1865#0" expanded="false" />
-                <element signature="e#2979#3326#0" expanded="false" />
-                <element signature="e#6443#6516#0" expanded="false" />
-                <element signature="e#6565#8014#0" expanded="false" />
-                <element signature="e#10043#11989#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="extract_total_precipitation_hres.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/extract_total_precipitation_hres.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="103" column="21" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -114,14 +77,17 @@
         <option value="$PROJECT_DIR$/ECMWF_GlobalAnomalies.py" />
         <option value="$PROJECT_DIR$/prog.py" />
         <option value="$PROJECT_DIR$/different_statistics_from_grib.py" />
-        <option value="$PROJECT_DIR$/GlobalAnomaliesProject.py" />
-        <option value="$PROJECT_DIR$/wfp_data_analysis_anomalies.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/calculate_time_window_date.py" />
         <option value="$PROJECT_DIR$/wfp_data_analysis_anomalies_r1.py" />
         <option value="$PROJECT_DIR$/ecmwf_data_analysis.py" />
         <option value="$PROJECT_DIR$/extract_total_precipitation_hres.py" />
         <option value="$PROJECT_DIR$/ECMWFControlCenter.py" />
+        <option value="$PROJECT_DIR$/wfp_data_analysis_anomalies.py" />
+        <option value="$PROJECT_DIR$/unnecessary_math.py" />
+        <option value="$PROJECT_DIR$/test_um_unittest.py" />
+        <option value="$PROJECT_DIR$/test_global.py" />
+        <option value="$PROJECT_DIR$/GlobalAnomaliesProject.py" />
       </list>
     </option>
   </component>
@@ -156,6 +122,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -174,9 +141,50 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecmwf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecmwf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="4_anomalies_3_minus_2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecmwf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecmwf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2_mean_from_gribs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecmwf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecmwf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="1_gribs_from_ecmwf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -186,15 +194,15 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\meteorological\ecmwf" />
+      <recent name="C:\meteorological\ecmwf\5_tests" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\meteorological\ecmwf\5_tests" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\meteorological\ecmwf\5_tests" />
-      <recent name="C:\meteorological\ecmwf" />
-    </key>
   </component>
-  <component name="RunManager" selected="Python.ECMWFControlCenter">
+  <component name="RunManager" selected="Python.GlobalAnomaliesProject">
     <configuration default="false" name="ECMWFControlCenter" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -208,57 +216,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="ecmwf" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ECMWFControlCenter.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="wfp_data_analysis_anomalies" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="ecmwf" />
-      <option name="SCRIPT_NAME" value="C:\meteorological\ecmwf\5_tests\wfp_data_analysis_anomalies.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="different_statistics_from_grib" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="ecmwf" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/different_statistics_from_grib.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="ecmwf" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -278,6 +235,65 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/wfp_data_analysis_anomalies_r1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="GlobalAnomaliesProject" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ecmwf" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GlobalAnomaliesProject.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Nosetests in test_um_unittest" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ecmwf" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_um_unittest.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Nosetests in TestUM" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ecmwf" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_um_unittest.py" />
+      <option name="CLASS_NAME" value="TestUM" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -416,18 +432,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.ECMWFControlCenter" />
-      <item index="1" class="java.lang.String" itemvalue="Python.wfp_data_analysis_anomalies" />
-      <item index="2" class="java.lang.String" itemvalue="Python.different_statistics_from_grib" />
-      <item index="3" class="java.lang.String" itemvalue="Python.test" />
-      <item index="4" class="java.lang.String" itemvalue="Python.wfp_data_analysis_anomalies_r1" />
+      <item index="1" class="java.lang.String" itemvalue="Python.wfp_data_analysis_anomalies_r1" />
+      <item index="2" class="java.lang.String" itemvalue="Python.GlobalAnomaliesProject" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Nosetests in test_um_unittest" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Nosetests in TestUM" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.ECMWFControlCenter" />
-        <item index="1" class="java.lang.String" itemvalue="Python.wfp_data_analysis_anomalies_r1" />
-        <item index="2" class="java.lang.String" itemvalue="Python.test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.wfp_data_analysis_anomalies" />
-        <item index="4" class="java.lang.String" itemvalue="Python.different_statistics_from_grib" />
+        <item index="0" class="java.lang.String" itemvalue="Python.GlobalAnomaliesProject" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Nosetests in test_um_unittest" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Nosetests in TestUM" />
+        <item index="3" class="java.lang.String" itemvalue="Python.ECMWFControlCenter" />
+        <item index="4" class="java.lang.String" itemvalue="Python.wfp_data_analysis_anomalies_r1" />
       </list>
     </recent_temporary>
   </component>
@@ -466,8 +482,35 @@
       <option name="project" value="LOCAL" />
       <updated>1470148658590</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Attivato il taglio per paesi. Taglia adeaguatamente il file con la precipitazione TOTAL con le coordinate del piccolo raster generato per il paesi di interesse.">
+      <created>1470299932264</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1470299932264</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Nosetests_in_TestUM - 2016.08.10 at 12h 48m 14s.xml">
+      <configuration name="Nosetests in TestUM" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_um_unittest - 2016.08.10 at 12h 06m 45s.xml">
+      <configuration name="Nosetests in test_um_unittest" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_um_unittest - 2016.08.10 at 12h 47m 19s.xml">
+      <configuration name="Nosetests in test_um_unittest" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_um_unittest - 2016.08.10 at 12h 48m 37s.xml">
+      <configuration name="Nosetests in test_um_unittest" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_um_unittest - 2016.08.10 at 13h 34m 06s.xml">
+      <configuration name="Nosetests in test_um_unittest" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_um_unittest - 2016.08.10 at 13h 34m 55s.xml">
+      <configuration name="Nosetests in test_um_unittest" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -480,16 +523,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15753424" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17913593" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28619152" sideWeight="0.22550052" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.49789253" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25501114" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.6032666" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3363029" sideWeight="0.7744995" order="2" side_tool="false" content_ui="tabs" x="1992" y="29" width="1179" height="711" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28507796" sideWeight="0.6032666" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24610245" sideWeight="0.7744995" order="2" side_tool="false" content_ui="tabs" x="1992" y="29" width="1179" height="711" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19599578" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32182628" sideWeight="0.49789253" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -497,7 +541,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.49789253" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -520,43 +563,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="28" />
+      <option name="time" value="40" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ECMWFControlCenter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ECMWFControlCenter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2652">
-          <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/struttura.txt" />
-    <entry file="file://$PROJECT_DIR$/ECMWFControlCenter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ECMWFControlCenter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -593,159 +604,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/illo.csv" />
     <entry file="file://$PROJECT_DIR$/test_distribuzione.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/aggregate_temporal.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/cap7_extract_polygon.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/cap7_rasterize.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/capiamo_dplyr.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/filtering.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/funzioni.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/inziamo_raster.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/map_algebra.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/merge_rasters.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/primo_raster_6chap.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/quinta_vettori_haifa_intersezioni.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/raster_reprojection.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/raster_resample.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/terrain_analysis.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/terzo_vettori.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/timeseries.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/prima_vettori.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/pgres_connect.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/matrici queste sconosciute.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/leggiRegioniItaliane.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/aggregate_temporal.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/cap7_extract_polygon.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/cap7_rasterize.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/capiamo_dplyr.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/filtering.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/funzioni.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/inziamo_raster.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/map_algebra.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/merge_rasters.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/primo_raster_6chap.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/quinta_vettori_haifa_intersezioni.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/raster_reprojection.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/raster_resample.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/terrain_analysis.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/terzo_vettori.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/timeseries.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/prima_vettori.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/pgres_connect.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/matrici queste sconosciute.R" />
+    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/leggiRegioniItaliane.R" />
     <entry file="file://$PROJECT_DIR$/4_anomalies_3_minus_2/anm_GLOBAL_2806_07_08_19792015.tif.aux.xml" />
     <entry file="file://$PROJECT_DIR$/4_anomalies_3_minus_2/anm_GLOBAL_2806_07_08_19792015.tif.ovr" />
     <entry file="file://$PROJECT_DIR$/different_statistics_from_grib.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
           <caret line="148" column="133" selection-start-line="148" selection-start-column="133" selection-end-line="148" selection-end-column="133" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GlobalAnomaliesProject.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="200" column="44" selection-start-line="200" selection-start-column="44" selection-end-line="200" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -757,13 +641,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py" />
     <entry file="file://$PROJECT_DIR$/test.out" />
     <entry file="file://$PROJECT_DIR$/calculate_time_window_date.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -788,50 +666,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wfp_data_analysis_anomalies_r1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="190" column="0" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#122#937#0" expanded="false" />
-            <element signature="e#1009#3811#0" expanded="false" />
-            <element signature="e#3861#4375#0" expanded="false" />
-            <element signature="e#4494#6755#0" expanded="false" />
-            <element signature="e#6801#7608#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ecmwf_data_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="836">
           <caret line="207" column="37" selection-start-line="207" selection-start-column="28" selection-end-line="207" selection-end-column="37" />
-          <folding>
-            <element signature="e#8117#11080#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/extract_total_precipitation_hres.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="103" column="21" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="221">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ECMWFControlCenter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="311" column="0" selection-start-line="311" selection-start-column="0" selection-end-line="311" selection-end-column="0" />
+        <state relative-caret-position="187">
+          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wfp_data_analysis_anomalies.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="228" column="35" selection-start-line="228" selection-start-column="35" selection-end-line="228" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/unnecessary_math.py" />
+    <entry file="file://$PROJECT_DIR$/test_um_unittest.py" />
+    <entry file="file://$PROJECT_DIR$/2_mean_from_gribs/mean_GLOBAL_1019_08_19792015.tif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_global.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
           <folding>
-            <element signature="e#69#90#0" expanded="true" />
-            <element signature="e#1287#1865#0" expanded="false" />
-            <element signature="e#2979#3326#0" expanded="false" />
-            <element signature="e#6443#6516#0" expanded="false" />
-            <element signature="e#6565#8014#0" expanded="false" />
-            <element signature="e#10043#11989#0" expanded="false" />
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wfp_data_analysis_anomalies_r1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="52" column="50" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GlobalAnomaliesProject.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="e#69#84#0" expanded="true" />
+            <element signature="e#1310#1565#0" expanded="false" />
+            <element signature="e#1599#1743#0" expanded="false" />
+            <element signature="e#1781#1975#0" expanded="false" />
+            <element signature="e#2144#2576#0" expanded="false" />
+            <element signature="e#2635#3674#0" expanded="false" />
+            <element signature="e#3722#5936#0" expanded="false" />
+            <element signature="e#8758#9245#0" expanded="false" />
+            <element signature="e#9312#9692#0" expanded="false" />
+            <element signature="e#9738#10269#0" expanded="false" />
+            <element signature="e#10318#11293#0" expanded="false" />
           </folding>
         </state>
       </provider>

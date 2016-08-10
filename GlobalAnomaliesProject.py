@@ -6,17 +6,12 @@ import datetime
 import os
 import sys
 import json
-from ftplib import FTP
 import numpy as np
-
 import gdal
-from osgeo.gdalconst import GA_ReadOnly
 from ftplib import FTP
 gdal.UseExceptions()
-import gdal
-from gdalconst import *
 from osgeo import osr
-import fiona
+
 gdal.UseExceptions()
 from osgeo import gdal, gdalnumeric
 from osgeo.gdalconst import GA_ReadOnly
@@ -32,10 +27,11 @@ class GlobalAnomaliesProject(object):
         self.anno_massimo = int(anno_max)
 
         self.DATE_DIR = "0_generated_date_files"
-        self.GRIBS_DIR = "1_gribs_from_ecmwf"
+        self.GRIB_DIR = "1_gribs_from_ecmwf"
         self.MEAN_DIR = "2_mean_from_gribs"
         self.LAST_DIR = "3_ecmwf_ftp_wfp"
         self.ANOM_DIR = "4_anomalies_3_minus_2"
+        self.GLOBAL_PREFIX = 'GLOBAL'
 
         self.range_anni = range(self.anno_minimo, self.anno_massimo)
         self.adesso = datetime.datetime.now()
@@ -44,8 +40,14 @@ class GlobalAnomaliesProject(object):
         self.in_che_anno_siamo = self.adesso.year
         self.lista_anni_correnti = list(range(self.anno_minimo, self.in_che_anno_siamo))
         self.SALTO = 10
+        self.giorno_fine = self.giorno_inizio + self.SALTO
 
     def setYears(self, anno_minimo, anno_massimo):
+
+        """Set the years for the calculation of the climatological mean.
+            The years used if no minimum and aximum years are provided are
+            1979 - 2015
+        """
         self.anno_minimo = anno_minimo
         self.anno_massimo = anno_massimo
 
@@ -54,13 +56,18 @@ class GlobalAnomaliesProject(object):
         anno_massimo_calcolo = self.anno_massimo
         return anno_minimo_calcolo, anno_massimo_calcolo
 
+    def check_files(self):
+
+        self.file_climate_path = r'C:/meteorological/ecmwf/2_mean_from_gribs/mean_GLOBAL_1019_08_19792015.tif'
+        self.current_file_path = r'C:/meteorological/ecmwf/3_ecmwf_ftp_wfp/TP_08100819.tif'
+
 
 class HistoricalTrend(GlobalAnomaliesProject):
 
     def __init__(self):
         super(HistoricalTrend, self).__init__()
 
-    def raccolta_parametri(self):
+    def parameters_gathering(self):
 
         anno_minimo = int(self.anno_minimo)
         anno_massimo = int(int(self.anno_massimo))
@@ -73,7 +80,7 @@ class HistoricalTrend(GlobalAnomaliesProject):
         giorno_inizio = self.giorno_inizio
         giorno_fine = giorno_inizio + self.SALTO
 
-    def controlla_date(self): #,anno_inizio, mese_inizio, giorno_inizio, salto
+    def check_dates_before_creating_file(self):
 
         self.lista_mese_giorno = []
         lista_giorni = []
@@ -81,13 +88,6 @@ class HistoricalTrend(GlobalAnomaliesProject):
 
         salto_giorni = datetime.timedelta(days=self.SALTO + 1)
         data_finale = data_iniziale + salto_giorni
-
-        # MENO LEGGIBILE
-        # lista_giorni_comprehension = [data_iniziale + salto_giorni for x in range(0, 8)]
-        # print lista_giorni
-
-        # PANDAS NON RIDUCE LA COMPLESSITA
-        # datelist = pd.date_range(pd.datetime(int(anno_inizio), int(mese_inizio), int(giorno_inizio)), periods=8).tolist()
 
         giorno_data_iniziale = '{:02d}'.format(data_iniziale.day)
         giorno_data_finale = '{:02d}'.format(data_finale.day)
@@ -103,7 +103,7 @@ class HistoricalTrend(GlobalAnomaliesProject):
                 '{:02d}'.format(giorni_successivi.month) + "-" + '{:02d}'.format(giorni_successivi.day))
             lista_giorni.append(giorni_successivi)
 
-    def crea_file(self):
+    def create_dates_txt_file(self):
 
         lista_finale = []
         for anno in self.lista_anni:
@@ -139,7 +139,7 @@ class HistoricalTrend(GlobalAnomaliesProject):
         self.date_file_path = '0_generated_date_files/' + "req_" + str(prima_parte) + "_" + str(mese) + "_" + str(
             seconda_parte) + ".txt"
         if os.path.isfile(self.date_file_path):
-            print "FILE DATES ESISTENTE"
+            print "File containing dates has already been generated"
 
         nuovo = open(self.date_file_path, mode='w')
         nuovo.write('"')
@@ -157,72 +157,74 @@ class HistoricalTrend(GlobalAnomaliesProject):
 
     def mean_from_historical_forecasts(self):
 
-        parte_iso = 'GLOBAL'
         parte_date = self.date_file_path.split(".")[0].split("req")[1]
 
         date = open(self.date_file_path)
         time_frame_json = json.load(date)
 
-        grib_file = "1_gribs_from_ecmwf/" + parte_iso + parte_date + ".grib"
+        grib_file = "1_gribs_from_ecmwf/" + self.GLOBAL_PREFIX + parte_date + ".grib"
+        if os.path.isfile(grib_file):
+            fileSize = os.path.getsize(grib_file)
+            print "File is %d" % fileSize
+            ecmfwf_file_asRaster = gdal.Open(grib_file)
+        else:
+            server.retrieve({
+                "class": "ei",
+                "dataset": "interim",
+                "date": time_frame_json,
+                "expver": "1",
+                "grid": "0.125/0.125",
+                "levtype": "sfc",
+                "param": "228.128",
+                "step": "24",
+                "stream": "oper",
+                "target": grib_file,
+                "time": "12",
+                "type": "fc",
+            })
+            ecmfwf_file_asRaster = gdal.Open(grib_file)
 
-        server.retrieve({
-            "class": "ei",
-            "dataset": "interim",
-            "date": time_frame_json,
-            "expver": "1",
-            "grid": "0.125/0.125",
-            "levtype": "sfc",
-            "param": "228.128",
-            "step": "24",
-            "stream": "oper",
-            "target": grib_file,
-            "time": "12",
-            "type": "fc",
-        })
-
-
-        tif_mean_file = "2_mean_from_gribs/mean_" + parte_iso + parte_date + ".tif"
-
-        ecmfwf_file_asRaster = gdal.Open(grib_file)
         x_size = ecmfwf_file_asRaster.RasterXSize
         y_size = ecmfwf_file_asRaster.RasterYSize
         numero_bande = ecmfwf_file_asRaster.RasterCount
 
-        # print "Ci sono %d bande " % numero_bande
+        print "Number of bands %d " % numero_bande
         banda_esempio = ecmfwf_file_asRaster.GetRasterBand(1)
         type_banda_esempio = banda_esempio.DataType
 
-        banda_somma = np.zeros((y_size, x_size,), dtype=np.float64)
-        for i in range(1, numero_bande):
-            banda = ecmfwf_file_asRaster.GetRasterBand(i)
-            # NON MI SERVE IN QUESTA FASE MA E' UTILE IN PROSPETTIVA
-            # genera_statistiche_banda_grib(banda, i)
-            data = gdalnumeric.BandReadAsArray(banda)
-            banda_somma = banda_somma + data
+        tif_mean_file = "2_mean_from_gribs/mean_" + self.GLOBAL_PREFIX + parte_date + ".tif"
+        if os.path.isfile(tif_mean_file):
+            mean_bande_climatology = gdal.Open(tif_mean_file)
+        else:
+            banda_somma = np.zeros((y_size, x_size,), dtype=np.float64)
+            for i in range(1, numero_bande):
+                print "Processing band %d of %d" % (i,numero_bande)
+                banda = ecmfwf_file_asRaster.GetRasterBand(i)
+                data = gdalnumeric.BandReadAsArray(banda)
+                banda_somma = banda_somma + data
 
-        # mean_bande_in_mm = (banda_somma/numero_bande)*1000
-        # CONFRONTANDO FORECAST CON FORECAST NON HO BISOGNO DI AVERLO IN MILLIMETRI LASCIO TUTTO IN METRI
-        mean_bande_in_mm = (banda_somma / numero_bande)
+            mean_bande_climatology = (banda_somma / numero_bande)
 
-        # Write the out file
-        driver = gdal.GetDriverByName("GTiff")
-        raster_mean_from_bands = driver.Create(tif_mean_file, x_size, y_size, 1, type_banda_esempio)
-        gdalnumeric.CopyDatasetInfo(ecmfwf_file_asRaster, raster_mean_from_bands)
-        banda_dove_scrivere_raster_mean = raster_mean_from_bands.GetRasterBand(1)
+            # Write the out file
+            driver = gdal.GetDriverByName("GTiff")
+            raster_mean_from_bands = driver.Create(tif_mean_file, x_size, y_size, 1, type_banda_esempio)
+            gdalnumeric.CopyDatasetInfo(ecmfwf_file_asRaster, raster_mean_from_bands)
+            banda_dove_scrivere_raster_mean = raster_mean_from_bands.GetRasterBand(1)
 
-        try:
-            gdalnumeric.BandWriteArray(banda_dove_scrivere_raster_mean, mean_bande_in_mm)
-            return "Mean raster exported in" + tif_mean_file + "\n"
-        except IOError as err:
-            return str(err.message) + + "\n"
+            try:
+                gdalnumeric.BandWriteArray(banda_dove_scrivere_raster_mean,mean_bande_climatology)
+                print "Mean raster exported in" + tif_mean_file + "\n"
+            except IOError as err:
+                return str(err.message) + + "\n"
 
+        self.file_climate_path = tif_mean_file
 
 class PresentConditions(GlobalAnomaliesProject):
 
     def __init__(self):
         super(PresentConditions, self).__init__()
 
-    def FtpConnectionFilesGathering(self):
+    def ftp_connection_files_gathering(self):
 
         self.lista_files_ECMWF = []
 
@@ -233,8 +235,6 @@ class PresentConditions(GlobalAnomaliesProject):
         except:
             pass
 
-        # lista_files = ftp.retrlines('LIST')
-        # lista_files = ftp.dir()
         for file in ftp.nlst():
             filename, file_extension = os.path.splitext(file)
             if file_extension == '' and len(file) == 20:
@@ -243,12 +243,13 @@ class PresentConditions(GlobalAnomaliesProject):
 
         print messaggioServerFTP
 
-    def FtpConnectionFilesRetrieval(self, nomefile):
+    def ftp_connection_files_retrieval(self, nomefile):
 
         try:
             ftp = FTP('ftp.wfp.org')
             ftp.login('WFP_GISviewer', 'FTPviewer')
             messaggioServerFTP = str(ftp.getwelcome()) + "\n"
+            print messaggioServerFTP
         except:
             pass
 
@@ -257,7 +258,7 @@ class PresentConditions(GlobalAnomaliesProject):
         gFile.close()
         ftp.quit
 
-    def controlla_date_ftp(self): #,anno_inizio, mese_inizio, giorno_inizio, salto
+    def check_dates_wfp_ftp(self):
 
         data_iniziale = datetime.date(int(self.anno_minimo), int(self.mese_inizio), int(self.giorno_inizio))
 
@@ -270,9 +271,7 @@ class PresentConditions(GlobalAnomaliesProject):
         self.mese_data_inziale = '{:02d}'.format(data_iniziale.month)
         self.mese_data_finale = '{:02d}'.format(data_finale.month)
 
-        # return giorno_data_iniziale, mese_data_inziale, giorno_data_finale, mese_data_finale
-
-    def GetGeoInfo(self,filename):
+    def get_geo_info(self, filename):
 
         SourceDS = gdal.Open(filename, GA_ReadOnly)
         NDV = SourceDS.GetRasterBand(1).GetNoDataValue()
@@ -297,19 +296,18 @@ class PresentConditions(GlobalAnomaliesProject):
 
         return NDV, xsize, ysize, GeoT, Projection, DataType, DataTypeTP, TPBand, DataTP, DataTypeTPInt
 
-    # Function to write a new file.
-    def CreateGeoTiffFromSelectedBand(self, Array, driver, NDV, xsize, ysize, GeoT, Projection, DataType):
+    def create_geo_tiff_from_selected_band(self, Array, driver, NDV, xsize, ysize, GeoT, Projection, DataType):
 
         if DataType == 'Float32':
             DataType = gdal.GDT_Float32
         elif DataType == 'Float64':
             DataType == gdal.GDT_Float64
 
-        NewFileName = self.nome_file_estratto_TotalPrecipitation + '.tif'
-        # Set nans to the original No Data Value
+        extracted_total_precipitation = self.nome_file_estratto_TotalPrecipitation + '.tif'
+
         Array[np.isnan(Array)] = NDV
-        # Set up the dataset
-        DataSet = driver.Create(NewFileName, xsize, ysize, 1, DataType)
+
+        DataSet = driver.Create(extracted_total_precipitation, xsize, ysize, 1, DataType)
         DataSet.SetGeoTransform(GeoT)
         DataSet.SetProjection(Projection.ExportToWkt())
         # Write the array
@@ -319,19 +317,24 @@ class PresentConditions(GlobalAnomaliesProject):
         else:
             print "No Data None"
 
-        return NewFileName
+        return extracted_total_precipitation
 
-    def EstrazioneBandaTP_hres(self):
+    def exctract_tp_band(self):
 
         DataSet = gdal.Open(self.file_gribs_ftp_da_trasferire, GA_ReadOnly)
         Band = DataSet.GetRasterBand(1)
         Array = Band.ReadAsArray()
         NDV = Band.GetNoDataValue()
-        NDV, xsize, ysize, GeoT, Projection, DataType, DataTypeTP, TPBand, DataTP, DataTypeTPInt = self.GetGeoInfo(self.file_gribs_ftp_da_trasferire)
+        NDV, xsize, ysize, GeoT, Projection, DataType, \
+        DataTypeTP, TPBand, DataTP, DataTypeTPInt = self.get_geo_info(self.file_gribs_ftp_da_trasferire)
 
         driver = gdal.GetDriverByName('GTiff')
 
-        self.CreateGeoTiffFromSelectedBand(DataTP, driver, NDV, xsize, ysize, GeoT, Projection, DataTypeTPInt)
+        extracted_total_precipitation_tif = self.create_geo_tiff_from_selected_band(DataTP, driver,
+                                                                                NDV, xsize, ysize, GeoT,
+                                                                                Projection, DataTypeTPInt)
+
+        return extracted_total_precipitation_tif
 
     def extract_precipitation_from_last_forecast(self):
 
@@ -353,34 +356,94 @@ class PresentConditions(GlobalAnomaliesProject):
 
             self.file_gribs_ftp_da_trasferire = self.LAST_DIR + "/" + file_scelto
             self.nome_file_estratto_TotalPrecipitation = self.LAST_DIR + "/TP_" + stringa1 + stringa2
+            self.ftp_connection_files_retrieval(file_scelto)
+            self.current_band = self.exctract_tp_band()
 
-            # extract_total_precipitation_hres.FtpConnectionFilesRetrieval(ecmwf_dir, file_scelto)
-            # extract_total_precipitation_hres.EstrazioneBandaTP_hres(file_ftp, nome_file_estratto_TP)
-            self.FtpConnectionFilesRetrieval(file_scelto)
-            self.EstrazioneBandaTP_hres()
-
-
-class AnomaliesCalculation(GlobalAnomaliesProject):
+class AnomaliesCalculation(HistoricalTrend,PresentConditions):
 
     def __init__(self):
         super(AnomaliesCalculation, self).__init__()
+        super(AnomaliesCalculation, self).__init__()
 
-if __name__=="__main__":
+    def calculate_global_anomalies(self):
+
+        climate_file = gdal.Open(self.file_climate_path)
+        x_size_clim = climate_file.RasterXSize
+        y_size_clim = climate_file.RasterYSize
+        print "Size of climate raster X=%0.2f Y=%0.2f" % (x_size_clim, y_size_clim)
+
+        geotransform_climate = climate_file.GetGeoTransform()
+        originX_clim = geotransform_climate[0]
+        originY_clim = geotransform_climate[3]
+        pixelWidth_clim = geotransform_climate[1]
+        pixelHeight_clim = geotransform_climate[5]
+        print "Origin of climate file X=%0.2f Y=%0.2f" % (originX_clim, originY_clim)
+        print "Size of pixel for climate raster Width=%0.2f and Height=%0.2f" % (pixelWidth_clim, pixelHeight_clim)
+
+        banda_climate = climate_file.GetRasterBand(1)
+        print "Tipo dato file climate %s" % banda_climate.DataType
+
+        current_file = gdal.Open(self.nome_file_estratto_TotalPrecipitation)
+        x_size_curr = current_file.RasterXSize
+        y_size_curr = current_file.RasterYSize
+        print
+        print "Size of current raster X=%0.2f Y=%0.2f" % (x_size_curr, y_size_curr)
+
+        geotransform_current = current_file.GetGeoTransform()
+        originX_curr = geotransform_current[0]
+        originY_curr = geotransform_current[3]
+        pixelWidth_curr = geotransform_current[1]
+        pixelHeight_curr = geotransform_current[5]
+        print "Origin of current file X=%0.2f Y=%0.2f" % (originX_curr, originY_curr)
+        print "Size of pixel for current raster Width=%0.2f and Height=%0.2f" % (pixelWidth_curr, pixelHeight_curr)
+
+        banda_current = current_file.GetRasterBand(1)
+        print "Tipo dato file current %s" % banda_current.DataType
+
+        type_banda_esempio = banda_current.DataType
+
+        data_current = gdalnumeric.BandReadAsArray(banda_current)
+        data_climate = gdalnumeric.BandReadAsArray(banda_climate, xoff=0, yoff=72, win_xsize=2880, win_ysize=1297)
+
+        banda_anomala = np.subtract(data_current, data_climate)
+
+        nome_tif_anomalie = "4_anomalies_3_minus_2/" + str(self.file_climate_path).split("/")[4].replace("mean", "anm")
+
+        # Write the out file
+        driver = gdal.GetDriverByName("GTiff")
+        raster_anomaly_from_bands = driver.Create(nome_tif_anomalie, x_size_curr, y_size_curr, 1, type_banda_esempio)
+        gdalnumeric.CopyDatasetInfo(current_file, raster_anomaly_from_bands)
+        banda_dove_scrivere_raster_anomaly = raster_anomaly_from_bands.GetRasterBand(1)
+
+        try:
+            gdalnumeric.BandWriteArray(banda_dove_scrivere_raster_anomaly, banda_anomala)
+            return "Mean raster exported in" + nome_tif_anomalie + "\n"
+        except IOError as err:
+            return str(err.message) + "\n"
+
+if __name__ == '__main__':
 
     ### HISTORICAL TRENDS
-    # hist_trends = HistoricalTrend()
-    # # hist_trends.setYears(sys.argv[1], sys.argv[2])
-    # parametri_date = hist_trends.raccolta_parametri()
-    # date_verificate = hist_trends.controlla_date()
-    # hist_trends.crea_file()
-    # hist_trends.mean_from_historical_forecasts()
+    hist_trends = HistoricalTrend()
+    num_par = len(sys.argv)
+    if num_par > 1:
+        hist_trends.setYears(sys.argv[1], sys.argv[2])
+    parametri_date = hist_trends.parameters_gathering()
+    date_verificate = hist_trends.check_dates_before_creating_file()
+    hist_trends.create_dates_txt_file()
+    climate_mean = hist_trends.mean_from_historical_forecasts()
+    print climate_mean
 
     ### PRESENT CONDITIONS
     pres_conds = PresentConditions()
-    # pres_conds.setYears(sys.argv[1], sys.argv[2])
-    pres_conds.FtpConnectionFilesGathering()
-    pres_conds.controlla_date_ftp()
+    if num_par > 1:
+        pres_conds.setYears(sys.argv[1], sys.argv[2])
+    pres_conds.ftp_connection_files_gathering()
+    pres_conds.check_dates_wfp_ftp()
     pres_conds.extract_precipitation_from_last_forecast()
 
-    # anom_calc = AnomaliesCalculation().setYears(sys.argv[1], sys.argv[2])
-
+    ### ANOMALIES
+    anom_calc = AnomaliesCalculation()
+    if num_par > 1:
+        anom_calc.setYears(sys.argv[1], sys.argv[2])
+    anom_calc.calculate_global_anomalies()

@@ -18,8 +18,6 @@ def FtpConnectionFilesGathering():
     except:
         pass
 
-    # lista_files = ftp.retrlines('LIST')
-    # lista_files = ftp.dir()
     for file in ftp.nlst():
         filename, file_extension = os.path.splitext(file)
         if file_extension == '' and len(file) == 20:
@@ -72,15 +70,6 @@ def GetGeoInfo(FileName):
             DataTypeTPInt = TPBand.DataType
             DataTypeTP = gdal.GetDataTypeName(DataTypeTPInt)
             DataTP = TPBand.ReadAsArray()
-            # stats = TPBand.GetStatistics(True, True)
-            # if stats is None:
-            #     pass
-            # print "Minimum=%.3f, Maximum=%.3f, Mean=%.3f, StdDev=%.3f" % (stats[0], stats[1], stats[2], stats[3])
-            # print "NO DATA VALUE = ", TPBand.GetNoDataValue()
-            # print "MIN = ", TPBand.GetMinimum()
-            # print "MAX = ", TPBand.GetMaximum()
-            # print "SCALE = ", TPBand.GetScale()
-            # print "UNIT TYPE = ", TPBand.GetUnitType()
             break
 
     return NDV, xsize, ysize, GeoT, Projection, DataType, DataTypeTP, TPBand, DataTP, DataTypeTPInt
@@ -95,13 +84,10 @@ def CreateGeoTiffFromSelectedBand(Name, Array, driver, NDV, xsize, ysize, GeoT, 
         DataType == gdal.GDT_Float64
 
     NewFileName = Name
-    # Set nans to the original No Data Value
     Array[np.isnan(Array)] = NDV
-    # Set up the dataset
     DataSet = driver.Create(NewFileName, xsize, ysize, 1, DataType)  # the '1' is for band 1.
     DataSet.SetGeoTransform(GeoT)
     DataSet.SetProjection(Projection.ExportToWkt())
-    # Write the array
     DataSet.GetRasterBand(1).WriteArray(Array)
     if NDV:
         DataSet.GetRasterBand(1).SetNoDataValue(NDV)
@@ -113,25 +99,10 @@ def CreateGeoTiffFromSelectedBand(Name, Array, driver, NDV, xsize, ysize, GeoT, 
 def EstrazioneBandaTP_hres(FileName, name_TP_tif_file):
 
     DataSet = gdal.Open(FileName, GA_ReadOnly)
-    # Get the first (and only) band.
     Band = DataSet.GetRasterBand(1)
-    # Open as an array.
     Array = Band.ReadAsArray()
-    # Get the No Data Value
     NDV = Band.GetNoDataValue()
-    # Convert No Data Points to nans
-    # Array[Array == NDV] = np.nan
-    # Now I do some processing on Array, it's pretty complex
-    # but for this example I'll just add 20 to each pixel.
-    # NewArray = Array + 20  # If only it were that easy
-    # Now I'm ready to save the new file, in the meantime I have
-    # closed the original, so I reopen it to get the projection
-    # information...
     NDV, xsize, ysize, GeoT, Projection, DataType, DataTypeTP, TPBand, DataTP, DataTypeTPInt = GetGeoInfo(FileName)
-    # print NDV, xsize, ysize, GeoT, Projection, DataType , DataTypeTPInt
-    # print DataTypeTP
-    # print DataTP
-    # Set up the GTiff driver
     driver = gdal.GetDriverByName('GTiff')
 
     CreateGeoTiffFromSelectedBand(name_TP_tif_file, DataTP, driver, NDV, xsize, ysize, GeoT, Projection, DataTypeTPInt)

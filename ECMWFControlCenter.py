@@ -18,7 +18,9 @@ class AppECMWF:
 
     def __init__(self, finestra):
         
-        self.host = "10.11.40.84"
+        # self.host = "10.11.40.84"
+        self.host = "localhost"
+
         self.dbname = "geonode-imports"
         self.user = "geonode"
         self.password = "geonode"
@@ -35,7 +37,10 @@ class AppECMWF:
 
         #Define our connection string
         try:
-            connection_string = "host=%s dbname=%s user=%s password=%s" % (self.host, self.dbname, self.user, self.password)
+            connection_string = "host=%s dbname=%s user=%s password=%s" % (self.host,
+                                                                           self.dbname,
+                                                                           self.user,
+                                                                           self.password)
             self.conn = psycopg2.connect(connection_string)
         except Exception as e:
             print e.message
@@ -81,7 +86,8 @@ class AppECMWF:
         self.listbox = Listbox(finestra)
         self.listbox.place(x=450, y=170, width=155, height=175)
 
-        self.button_add_countries = Button(finestra, text="Add Country", fg="blue", command=self.aggiungi_paese_alla_lista_di_processo)
+        self.button_add_countries = Button(finestra, text="Add Country", fg="blue",
+                                           command=self.aggiungi_paese_alla_lista_di_processo)
         self.button_add_countries.place(x=210, y=3, width=80, height=25)
 
         def attiva_disattiva():
@@ -101,11 +107,13 @@ class AppECMWF:
         #                                             command=attiva_disattiva)
         # self.check_global_calculation.place(x=300, y=5)
 
-
-        self.button_latest_forecasts = Button(finestra, text="Calculate Mean", fg="blue", command = self.calcola_mean_from_historical_forecasts)
+        self.button_latest_forecasts = Button(finestra, text="Calculate Mean",
+                                              fg="blue",
+                                              command=self.calcola_mean_from_historical_forecasts)
         self.button_latest_forecasts.place(x=400, y=3, width=100, height=25)
 
-        self.button_avg_forecasts = Button(finestra, text="Extract Latest", fg="red", command=self.extract_precipitation_from_last_forecast)
+        self.button_avg_forecasts = Button(finestra, text="Extract Latest", fg="red",
+                                           command=self.extract_precipitation_from_last_forecast)
         self.button_avg_forecasts.place(x=500, y=3, width=110, height=25)
 
         self.area_oggi = Entry(finestra, background="white", foreground="red",)
@@ -271,7 +279,8 @@ class AppECMWF:
         self.area_messaggi.insert(INSERT, "File Current %s " % file_current)
         self.area_messaggi.insert(INSERT, "File Climate %s " % file_climate)
 
-        minX_clim_ar, maxY_clim_ar, maxX_clim_ar, minY_clim_ar = wfp_data_analysis_anomalies_r1.coordinate_immagini(file_climate)
+        minX_clim_ar, maxY_clim_ar, maxX_clim_ar, minY_clim_ar = \
+            wfp_data_analysis_anomalies_r1.coordinate_immagini(file_climate)
         print "Le coordinate di %s \nsono left %0.4f bottom %0.4f right %0.4f top %0.4f" %(
                     file_climate, minX_clim_ar, minY_clim_ar, maxX_clim_ar, maxY_clim_ar)
 
@@ -291,11 +300,12 @@ class AppECMWF:
         larghezza, altezza = wfp_data_analysis_anomalies_r1.misura_immagini(file_current)
         print "Le dimensioni della immagine %s \nsono larghezza %d altezza %d" % (file_current, larghezza, altezza)
 
-        ulY, lrY, lrX, ulX = wfp_data_analysis_anomalies_r1.coordinate_da_tagliare_sul_raster_precipitazione_globale(file_current,
-                                                                                                                         minX_clim_ar,
-                                                                                                                         maxY_clim_ar,
-                                                                                                                         maxX_clim_ar,
-                                                                                                                         minY_clim_ar)
+        ulY, lrY, lrX, ulX = \
+            wfp_data_analysis_anomalies_r1.coordinate_da_tagliare_sul_raster_precipitazione_globale(file_current,
+                                                                                                    minX_clim_ar,
+                                                                                                    maxY_clim_ar,
+                                                                                                    maxX_clim_ar,
+                                                                                                    minY_clim_ar)
         print
         print "Le coordinate di taglio per  %s inviate sono ulX %0.4f lrY %0.4f lrX %0.4f ulY %0.4f" % (
                         file_climate, minX_clim_ar, minY_clim_ar, maxX_clim_ar, maxY_clim_ar )
@@ -308,7 +318,6 @@ class AppECMWF:
                                                                                     lrX,
                                                                                     ulX,
                                                                                     file_climate)
-
 
 root = Tk()
 root.title("ECMWF Data Analysis")

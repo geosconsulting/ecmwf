@@ -183,10 +183,10 @@ def scateniamo_l_inferno(paese):
 
     pass
 
-    # dati_raccolti = raccolta_parametri(paese)
+    # dati_raccolti = parameters_gathering(paese)
     # lista_anni_analisi = dati_raccolti[6]
-    # liste_date = controlla_date(dati_raccolti[0], dati_raccolti[3], dati_raccolti[4], dati_raccolti[7])
+    # liste_date = check_dates_before_creating_file(dati_raccolti[0], dati_raccolti[3], dati_raccolti[4], dati_raccolti[7])
     # lista_mese_giorno = liste_date[0]
-    # il_file_generato = crea_file(lista_anni_analisi, lista_mese_giorno)
+    # il_file_generato = create_dates_txt_file(lista_anni_analisi, lista_mese_giorno)
     #
     # return il_file_generato
