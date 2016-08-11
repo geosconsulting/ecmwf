@@ -34,6 +34,8 @@ class GlobalAnomaliesProject(object):
         self.GLOBAL_PREFIX = 'GLOBAL'
 
         self.range_anni = range(self.anno_minimo, self.anno_massimo)
+        self.anno_minimo = min(self.range_anni)
+        self.anno_massimo = max(self.range_anni)
         self.adesso = datetime.datetime.now()
         self.giorno_inizio = self.adesso.day
         self.mese_inizio = self.adesso.month
@@ -41,6 +43,21 @@ class GlobalAnomaliesProject(object):
         self.lista_anni_correnti = list(range(self.anno_minimo, self.in_che_anno_siamo))
         self.SALTO = 10
         self.giorno_fine = self.giorno_inizio + self.SALTO
+        self.data_iniziale = datetime.date(int(self.anno_minimo), int(self.mese_inizio), int(self.giorno_inizio))
+        self.salto_giorni = datetime.timedelta(days=self.SALTO + 1)
+        self.data_finale = self.data_iniziale + self.salto_giorni
+        self.giorno_data_iniziale = '{:02d}'.format(self.data_iniziale.day)
+        self.giorno_data_finale = '{:02d}'.format(self.data_finale.month)
+        self.mese_data_inziale = '{:02d}'.format(self.data_iniziale.month)
+        self.mese_data_finale = '{:02d}'.format(self.data_finale.month)
+
+        # self.file_current_path = 'r'C:/meteorological/ecmwf/3_ecmwf_ftp_wfp/TP_08100819.tif'
+        if len(str(self.giorno_inizio)) < 2:
+            self.stringa1 = str(self.mese_inizio) + str('0' + (str(self.giorno_inizio)))
+            self.stringa2 = str(self.mese_inizio) + str(int(self.giorno_inizio + self.SALTO))
+        else:
+            self.stringa1 = self.mese_data_inziale + self.giorno_data_iniziale
+            self.stringa2 = self.mese_data_finale + self.giorno_data_finale
 
     def setYears(self, anno_minimo, anno_massimo):
 
@@ -56,49 +73,41 @@ class GlobalAnomaliesProject(object):
         anno_massimo_calcolo = self.anno_massimo
         return anno_minimo_calcolo, anno_massimo_calcolo
 
-    def check_files(self):
-
-        self.file_climate_path = r'C:/meteorological/ecmwf/2_mean_from_gribs/mean_GLOBAL_1019_08_19792015.tif'
-        self.current_file_path = r'C:/meteorological/ecmwf/3_ecmwf_ftp_wfp/TP_08100819.tif'
-
 
 class HistoricalTrend(GlobalAnomaliesProject):
 
     def __init__(self):
         super(HistoricalTrend, self).__init__()
+        # self.file_climate_path = r'C:/meteorological/ecmwf/2_mean_from_gribs/mean_GLOBAL_1019_08_19792015.tif'
+
+        prima_parte = str(self.giorno_inizio) + str(self.giorno_fine)
+        seconda_parte = str(self.anno_minimo) + str(self.anno_massimo)
+        self.date_file_path = '0_generated_date_files/' + "req_" + str(prima_parte) + "_" + str(self.mese_inizio) + \
+                              "_" + str(seconda_parte) + ".txt"
+        if os.path.isfile(self.date_file_path):
+            print "File containing dates has already been generated"
+
+        self.parte_date = self.date_file_path.split(".")[0].split("req")[1]
+        self.tif_mean_file = "2_mean_from_gribs/mean_" + self.GLOBAL_PREFIX + self.parte_date + ".tif"
+        self.file_climate_path = self.tif_mean_file
+
 
     def parameters_gathering(self):
 
-        anno_minimo = int(self.anno_minimo)
-        anno_massimo = int(int(self.anno_massimo))
-        self.lista_anni = range(anno_minimo, anno_massimo + 1)
-        numero_anni = anno_massimo - anno_minimo
-        mese = self.mese_inizio
         mese_str = str(self.mese_inizio)
         if len(mese_str) == 1:
             mese_str = "0" + mese_str
-        giorno_inizio = self.giorno_inizio
-        giorno_fine = giorno_inizio + self.SALTO
 
     def check_dates_before_creating_file(self):
 
         self.lista_mese_giorno = []
         lista_giorni = []
-        data_iniziale = datetime.date(int(self.anno_minimo), int(self.mese_inizio), int(self.giorno_inizio))
 
-        salto_giorni = datetime.timedelta(days=self.SALTO + 1)
-        data_finale = data_iniziale + salto_giorni
-
-        giorno_data_iniziale = '{:02d}'.format(data_iniziale.day)
-        giorno_data_finale = '{:02d}'.format(data_finale.day)
-        mese_data_inziale = '{:02d}'.format(data_iniziale.month)
-        mese_data_finale = '{:02d}'.format(data_finale.month)
-
-        self.lista_mese_giorno.append(str(mese_data_inziale) + "-" + str(giorno_data_iniziale))
-        lista_giorni.append(giorno_data_iniziale)
+        self.lista_mese_giorno.append(str(self.mese_data_inziale) + "-" + str(self.giorno_data_iniziale))
+        lista_giorni.append(self.giorno_data_iniziale)
         for indice in range(1, self.SALTO):
             range_date = datetime.timedelta(days=indice)
-            giorni_successivi = data_iniziale + range_date
+            giorni_successivi = self.data_iniziale + range_date
             self.lista_mese_giorno.append(
                 '{:02d}'.format(giorni_successivi.month) + "-" + '{:02d}'.format(giorni_successivi.day))
             lista_giorni.append(giorni_successivi)
@@ -106,7 +115,7 @@ class HistoricalTrend(GlobalAnomaliesProject):
     def create_dates_txt_file(self):
 
         lista_finale = []
-        for anno in self.lista_anni:
+        for anno in self.range_anni:
             for giorno in self.lista_mese_giorno:
                 lista_finale.append(str(anno) + "-" + str(giorno))
 
@@ -131,16 +140,6 @@ class HistoricalTrend(GlobalAnomaliesProject):
             giorno_massimo = giorno_massimo_b
             mese = str(mese_minimo) + "_" + str(mese_massimo)
 
-        anno_minimo = min(self.lista_anni)
-        anno_massimo = max(self.lista_anni)
-
-        prima_parte = str(giorno_minimo) + str(giorno_massimo)
-        seconda_parte = str(anno_minimo) + str(anno_massimo)
-        self.date_file_path = '0_generated_date_files/' + "req_" + str(prima_parte) + "_" + str(mese) + "_" + str(
-            seconda_parte) + ".txt"
-        if os.path.isfile(self.date_file_path):
-            print "File containing dates has already been generated"
-
         nuovo = open(self.date_file_path, mode='w')
         nuovo.write('"')
         lunghezza_lista = len(lista_finale)
@@ -157,12 +156,11 @@ class HistoricalTrend(GlobalAnomaliesProject):
 
     def mean_from_historical_forecasts(self):
 
-        parte_date = self.date_file_path.split(".")[0].split("req")[1]
 
         date = open(self.date_file_path)
         time_frame_json = json.load(date)
 
-        grib_file = "1_gribs_from_ecmwf/" + self.GLOBAL_PREFIX + parte_date + ".grib"
+        grib_file = "1_gribs_from_ecmwf/" + self.GLOBAL_PREFIX + self.parte_date + ".grib"
         if os.path.isfile(grib_file):
             fileSize = os.path.getsize(grib_file)
             print "File is %d" % fileSize
@@ -192,9 +190,8 @@ class HistoricalTrend(GlobalAnomaliesProject):
         banda_esempio = ecmfwf_file_asRaster.GetRasterBand(1)
         type_banda_esempio = banda_esempio.DataType
 
-        tif_mean_file = "2_mean_from_gribs/mean_" + self.GLOBAL_PREFIX + parte_date + ".tif"
-        if os.path.isfile(tif_mean_file):
-            mean_bande_climatology = gdal.Open(tif_mean_file)
+        if os.path.isfile(self.tif_mean_file):
+            mean_bande_climatology = gdal.Open(self.tif_mean_file)
         else:
             banda_somma = np.zeros((y_size, x_size,), dtype=np.float64)
             for i in range(1, numero_bande):
@@ -207,22 +204,23 @@ class HistoricalTrend(GlobalAnomaliesProject):
 
             # Write the out file
             driver = gdal.GetDriverByName("GTiff")
-            raster_mean_from_bands = driver.Create(tif_mean_file, x_size, y_size, 1, type_banda_esempio)
+            raster_mean_from_bands = driver.Create(self.tif_mean_file, x_size, y_size, 1, type_banda_esempio)
             gdalnumeric.CopyDatasetInfo(ecmfwf_file_asRaster, raster_mean_from_bands)
             banda_dove_scrivere_raster_mean = raster_mean_from_bands.GetRasterBand(1)
 
             try:
                 gdalnumeric.BandWriteArray(banda_dove_scrivere_raster_mean,mean_bande_climatology)
-                print "Mean raster exported in" + tif_mean_file + "\n"
+                print "Mean raster exported in" + self.tif_mean_file + "\n"
             except IOError as err:
                 return str(err.message) + + "\n"
 
-        self.file_climate_path = tif_mean_file
 
 class PresentConditions(GlobalAnomaliesProject):
 
     def __init__(self):
         super(PresentConditions, self).__init__()
+
+        self.file_current_path = self.LAST_DIR + "/TP_" + self.stringa1 + self.stringa2
 
     def ftp_connection_files_gathering(self):
 
@@ -340,29 +338,18 @@ class PresentConditions(GlobalAnomaliesProject):
 
         if len(self.lista_files_ECMWF) > 0:
             lista_ftp = []
-
-            if len(str(self.giorno_inizio)) < 2:
-                stringa1 = str(self.mese_inizio) + str('0' + (str(self.giorno_inizio)))
-                stringa2 = str(self.mese_inizio) + str(int(self.giorno_inizio + self.SALTO))
-            else:
-
-                stringa1 = self.mese_data_inziale + self.giorno_data_iniziale
-                stringa2 = self.mese_data_finale + self.giorno_data_finale
-
             for file_disponibile in self.lista_files_ECMWF:
                 lista_ftp.append(file_disponibile)
-                if stringa1 and stringa2 in file_disponibile:
+                if self.stringa1 and self.stringa2 in file_disponibile:
                     file_scelto = file_disponibile
 
             self.file_gribs_ftp_da_trasferire = self.LAST_DIR + "/" + file_scelto
-            self.nome_file_estratto_TotalPrecipitation = self.LAST_DIR + "/TP_" + stringa1 + stringa2
             self.ftp_connection_files_retrieval(file_scelto)
             self.current_band = self.exctract_tp_band()
 
 class AnomaliesCalculation(HistoricalTrend,PresentConditions):
 
     def __init__(self):
-        super(AnomaliesCalculation, self).__init__()
         super(AnomaliesCalculation, self).__init__()
 
     def calculate_global_anomalies(self):
@@ -423,7 +410,7 @@ class AnomaliesCalculation(HistoricalTrend,PresentConditions):
 
 if __name__ == '__main__':
 
-    ### HISTORICAL TRENDS
+    # ### HISTORICAL TRENDS
     hist_trends = HistoricalTrend()
     num_par = len(sys.argv)
     if num_par > 1:
@@ -446,4 +433,6 @@ if __name__ == '__main__':
     anom_calc = AnomaliesCalculation()
     if num_par > 1:
         anom_calc.setYears(sys.argv[1], sys.argv[2])
+    print anom_calc.file_current_path
+    print anom_calc.file_climate_path
     anom_calc.calculate_global_anomalies()
