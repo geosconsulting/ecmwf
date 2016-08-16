@@ -146,9 +146,15 @@ def media_cumulate(dir_cumulate):
 def genera_distribuzione_valori(immagine):
     pass
 
-stats = zonal_stats('C:/sparc/input_data/countries/senegal.shp', 'C:/sparc/input_data/countries/mean_DjiEriEthSom_2806_07_08_19792016.tif', stats="mean", copy_properties=True)
+stats = zonal_stats('C:/sparc/input_data/countries/ethiopia.shp',
+                    'C:/meteorological/ecmwf/2_mean_from_gribs/mean_GLOBAL_1222_8_19792014.tif',
+                    geojson_out=True,
+                    # stats="mean",
+                    stats=['min', 'max', 'median', 'mean', 'range'],
+                    copy_properties=True)
+
 for s in stats:
-    print s['name'], s['mean']
+    print s['properties']['ADM2_CODE'], s['properties']['ADM2_NAME'], s['properties']['mean']
 
 # cumulated_means_10days("1_gribs_from_ecmwf/DjiEriEthSom_2806_07_08_19792016.grib", "DjiEriEthSom", "2806", range(1979, 2016))
 

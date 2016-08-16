@@ -8,6 +8,7 @@
       <excludeFolder url="file://$MODULE_DIR$/3_ecmwf_ftp_wfp" />
       <excludeFolder url="file://$MODULE_DIR$/4_anomalies_3_minus_2" />
       <excludeFolder url="file://$MODULE_DIR$/5_tests" />
+      <excludeFolder url="file://$MODULE_DIR$/exportToHTML" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

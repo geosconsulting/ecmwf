@@ -32,7 +32,7 @@ class AppECMWF:
         # from datetime import timedelta
         # giorno_aggiunta = timedelta(days=1)
         # self.data_modificata = self.now.date() + giorno_aggiunta
-        # self.giorno_inizio = self.data_modificata.day
+        # self.starting_day = self.data_modificata.day
         self.giorno_inizio = self.now.day
 
         #Define our connection string
