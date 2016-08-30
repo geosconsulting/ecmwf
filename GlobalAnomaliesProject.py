@@ -9,7 +9,6 @@ import json
 import numpy as np
 import gdal
 from ftplib import FTP
-gdal.UseExceptions()
 from osgeo import osr
 gdal.UseExceptions()
 from osgeo import gdal, gdalnumeric
@@ -39,13 +38,12 @@ class GlobalAnomaliesProject(object):
         self.starting_month = self.adesso.month
         self.current_year = self.adesso.year
         self.list_years_range = list(range(self.starting_year, self.current_year))
-        self.finale_day = self.starting_day + self.LEAP_DAYS
         self.initial_date = datetime.date(int(self.starting_year), int(self.starting_month), int(self.starting_day))
         self.leap_days_date_format = datetime.timedelta(days=self.LEAP_DAYS)
         self.final_date_date_format = self.initial_date + self.leap_days_date_format
         self.initial_day_date_formatted = '{:02d}'.format(self.initial_date.day)
         self.final_day_date_formatted = '{:02d}'.format(self.final_date_date_format.day)
-        self.final_month_date_formatted = '{:02d}'.format(self.initial_date.month)
+        self.initial_month_date_formatted = '{:02d}'.format(self.initial_date.month)
         self.final_month_date_formatted = '{:02d}'.format(self.final_date_date_format.month)
         if len(str(self.starting_day)) < 2:
             self.date_string_initial = str(self.starting_month) + str('0' + (str(self.starting_day)))
@@ -73,12 +71,13 @@ class HistoricalTrend(GlobalAnomaliesProject):
 
     def __init__(self):
         super(HistoricalTrend, self).__init__()
-
-        first_part = str(self.starting_day) + str(self.finale_day)
-        second_part = str(self.starting_year) + str(self.ending_year)
-        self.date_file_path = self.DATE_DIR + '/' + "req_" + str(first_part) + \
-                              "_" + str(self.starting_month) + \
-                              "_" + str(second_part) + ".txt"
+        days_part = str(self.initial_day_date_formatted) + str(self.final_day_date_formatted)
+        months_part = str(self.initial_month_date_formatted) + str(self.final_month_date_formatted)
+        years_part = str(self.starting_year) + str(self.ending_year)
+        self.date_file_path = self.DATE_DIR + '/' +\
+                              "req_" + str(days_part) + \
+                              "_" + str(months_part) + \
+                              "_" + str(years_part) + ".txt"
         if os.path.isfile(self.date_file_path):
             print "File containing dates has already been generated"
 
@@ -98,7 +97,7 @@ class HistoricalTrend(GlobalAnomaliesProject):
         self.lista_mese_giorno = []
         lista_giorni = []
 
-        self.lista_mese_giorno.append(str(self.final_month_date_formatted) + "-" + str(self.initial_day_date_formatted))
+        self.lista_mese_giorno.append(str(self.initial_month_date_formatted) + "-" + str(self.initial_day_date_formatted))
         lista_giorni.append(self.initial_day_date_formatted)
         for indice in range(1, self.LEAP_DAYS):
             range_date = datetime.timedelta(days=indice)
@@ -351,7 +350,7 @@ class AnomaliesCalculation(HistoricalTrend,PresentConditions):
 
         data_current = gdalnumeric.BandReadAsArray(banda_current)
         data_climate = gdalnumeric.BandReadAsArray(banda_climate, xoff=0, yoff=72, win_xsize=2880, win_ysize=1297)
-        banda_anomala = np.subtract(data_current, data_climate)
+        banda_anomala = np.subtract(data_current, data_climate*10)
 
         # Write the out file
         driver = gdal.GetDriverByName("GTiff")

@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e8c4815-f81c-40f6-aa0d-f2cdbbb4ea02" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ecmwf.iml" afterPath="$PROJECT_DIR$/.idea/ecmwf.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ECMWFControlCenterMod.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/5_tests/wfp_data_analysis_anomalies.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/5_tests/wfp_data_analysis_anomalies_r1.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_global.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_um_unittest.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ECMWFControlCenter.py" afterPath="$PROJECT_DIR$/ECMWFControlCenter.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GlobalAnomaliesProject.py" afterPath="$PROJECT_DIR$/GlobalAnomaliesProject.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calculate_time_window_date.py" afterPath="$PROJECT_DIR$/calculate_time_window_date.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/different_statistics_from_grib.py" afterPath="$PROJECT_DIR$/different_statistics_from_grib.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ecmwf_data_analysis.py" afterPath="$PROJECT_DIR$/ecmwf_data_analysis.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wfp_data_analysis_anomalies_r1.py" afterPath="$PROJECT_DIR$/wfp_data_analysis_anomalies_r1.py" />
     </list>
     <ignored path="ecmwf.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,45 +38,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GlobalAnomaliesProject.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GlobalAnomaliesProject.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GlobalAnomaliesProject.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+            <state relative-caret-position="248">
+              <caret line="348" column="33" selection-start-line="348" selection-start-column="33" selection-end-line="348" selection-end-column="33" />
               <folding>
-                <element signature="e#2509#2765#0" expanded="false" />
-                <element signature="e#2799#2944#0" expanded="false" />
-                <element signature="e#3808#3912#0" expanded="false" />
-                <element signature="e#3971#4574#0" expanded="false" />
-                <element signature="e#6413#8721#0" expanded="false" />
-                <element signature="e#8778#13423#0" expanded="false" />
-                <element signature="e#8806#9069#0" expanded="false" />
-                <element signature="e#9126#9576#0" expanded="false" />
-                <element signature="e#9643#10023#0" expanded="false" />
-                <element signature="e#10069#10332#0" expanded="false" />
-                <element signature="e#10381#11356#0" expanded="false" />
-                <element signature="e#11479#12046#0" expanded="false" />
-                <element signature="e#12089#12840#0" expanded="false" />
-                <element signature="e#12907#13423#0" expanded="false" />
-                <element signature="e#13494#15070#0" expanded="false" />
-                <element signature="e#13522#13729#0" expanded="false" />
-                <element signature="e#13782#15070#0" expanded="false" />
-                <element signature="e#15105#16051#0" expanded="false" />
+                <element signature="e#69#84#0" expanded="true" />
+                <element signature="e#6481#8789#0" expanded="false" />
+                <element signature="e#10137#10400#0" expanded="false" />
+                <element signature="e#10449#11424#0" expanded="false" />
+                <element signature="e#11547#12114#0" expanded="false" />
+                <element signature="e#12157#12908#0" expanded="false" />
+                <element signature="e#12975#13491#0" expanded="false" />
+                <element signature="e#15176#16122#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="different_statistics_from_grib.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/different_statistics_from_grib.py">
+      <file leaf-file-name="wfp_data_analysis_anomalies_r1.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wfp_data_analysis_anomalies_r1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="161" column="37" selection-start-line="161" selection-start-column="37" selection-end-line="161" selection-end-column="37" />
+            <state relative-caret-position="170">
+              <caret line="145" column="74" selection-start-line="145" selection-start-column="74" selection-end-line="145" selection-end-column="74" />
               <folding>
-                <element signature="e#249#2730#0" expanded="false" />
-                <element signature="e#2765#4187#0" expanded="false" />
-                <element signature="e#4228#5847#0" expanded="false" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ECMWFControlCenter.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ECMWFControlCenter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3570">
+              <caret line="220" column="0" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -98,16 +101,18 @@
         <option value="$PROJECT_DIR$/prog.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/calculate_time_window_date.py" />
-        <option value="$PROJECT_DIR$/wfp_data_analysis_anomalies_r1.py" />
-        <option value="$PROJECT_DIR$/ecmwf_data_analysis.py" />
         <option value="$PROJECT_DIR$/extract_total_precipitation_hres.py" />
-        <option value="$PROJECT_DIR$/ECMWFControlCenter.py" />
         <option value="$PROJECT_DIR$/wfp_data_analysis_anomalies.py" />
         <option value="$PROJECT_DIR$/unnecessary_math.py" />
         <option value="$PROJECT_DIR$/test_um_unittest.py" />
         <option value="$PROJECT_DIR$/test_global.py" />
         <option value="$PROJECT_DIR$/different_statistics_from_grib.py" />
+        <option value="$PROJECT_DIR$/GlobalAnomaliesProject3Months.py" />
+        <option value="$PROJECT_DIR$/ECMWFControlCenterMod.py" />
+        <option value="$PROJECT_DIR$/ECMWFControlCenter.py" />
+        <option value="$PROJECT_DIR$/ecmwf_data_analysis.py" />
         <option value="$PROJECT_DIR$/GlobalAnomaliesProject.py" />
+        <option value="$PROJECT_DIR$/wfp_data_analysis_anomalies_r1.py" />
       </list>
     </option>
   </component>
@@ -142,6 +147,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -162,8 +169,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -172,15 +177,15 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\meteorological\ecmwf\5_tests" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\meteorological\ecmwf" />
       <recent name="C:\meteorological\ecmwf\5_tests" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\meteorological\ecmwf\5_tests" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.GlobalAnomaliesProject">
+  <component name="RunManager" selected="Python.ECMWFControlCenter">
     <configuration default="false" name="ECMWFControlCenter" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -236,27 +241,6 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Nosetests in TestUM" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="ecmwf" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_um_unittest.py" />
-      <option name="CLASS_NAME" value="TestUM" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_CLASS" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="different_statistics_from_grib" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -270,6 +254,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="ecmwf" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/different_statistics_from_grib.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ECMWFControlCenterMod" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ecmwf" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ECMWFControlCenterMod.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -412,16 +413,16 @@
       <item index="0" class="java.lang.String" itemvalue="Python.ECMWFControlCenter" />
       <item index="1" class="java.lang.String" itemvalue="Python.GlobalAnomaliesProject" />
       <item index="2" class="java.lang.String" itemvalue="Python tests.Nosetests in test_um_unittest" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Nosetests in TestUM" />
-      <item index="4" class="java.lang.String" itemvalue="Python.different_statistics_from_grib" />
+      <item index="3" class="java.lang.String" itemvalue="Python.different_statistics_from_grib" />
+      <item index="4" class="java.lang.String" itemvalue="Python.ECMWFControlCenterMod" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.GlobalAnomaliesProject" />
-        <item index="1" class="java.lang.String" itemvalue="Python.different_statistics_from_grib" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Nosetests in test_um_unittest" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Nosetests in TestUM" />
-        <item index="4" class="java.lang.String" itemvalue="Python.ECMWFControlCenter" />
+        <item index="0" class="java.lang.String" itemvalue="Python.ECMWFControlCenter" />
+        <item index="1" class="java.lang.String" itemvalue="Python.GlobalAnomaliesProject" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ECMWFControlCenterMod" />
+        <item index="3" class="java.lang.String" itemvalue="Python.different_statistics_from_grib" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Nosetests in test_um_unittest" />
       </list>
     </recent_temporary>
   </component>
@@ -488,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1470911043161</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Global calculation finito e adesso funziona dall'inizio alla fine grib,mean,extract,anomalia &#10;Forse faccio statistiche piu raffinate....forse intanto ho esteso il range di anni fino al 2015">
+      <created>1471337550935</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1471337550935</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -522,25 +530,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17913593" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17913593" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.23182297" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25501114" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28507796" sideWeight="0.60063225" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20044543" sideWeight="0.76817703" order="2" side_tool="false" content_ui="tabs" x="2051" y="13" width="1179" height="711" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19599578" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32182628" sideWeight="0.49789253" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20044543" sideWeight="0.76817703" order="2" side_tool="false" content_ui="tabs" x="2051" y="13" width="1179" height="711" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.49789253" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32182628" sideWeight="0.49789253" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -561,10 +569,18 @@
     <MESSAGE value="Global Calcualation finito da ottimizzare con anomalie e statistiche piu raffinate" />
     <MESSAGE value="Global claulation finito forse faccio statistiche piu raffinate....forse" />
     <MESSAGE value="Global calculation finito &#10;Adesso funziona dall'inizio alla fine grib,mean,extract,anomalia &#10;Forse faccio statistiche piu raffinate....forse" />
-    <option name="LAST_COMMIT_MESSAGE" value="Global calculation finito &#10;Adesso funziona dall'inizio alla fine grib,mean,extract,anomalia &#10;Forse faccio statistiche piu raffinate....forse" />
+    <MESSAGE value="Global calculation finito e adesso funziona dall'inizio alla fine grib,mean,extract,anomalia &#10;Forse faccio statistiche piu raffinate....forse intanto ho esteso il range di anni fino al 2015" />
+    <option name="LAST_COMMIT_MESSAGE" value="Global calculation finito e adesso funziona dall'inizio alla fine grib,mean,extract,anomalia &#10;Forse faccio statistiche piu raffinate....forse intanto ho esteso il range di anni fino al 2015" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/ecmwf_data_analysis.py</url>
+          <line>53</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -572,182 +588,127 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="47" />
+      <option name="time" value="55" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/struttura.txt" />
-    <entry file="file://$PROJECT_DIR$/chiamala.py" />
-    <entry file="file://$PROJECT_DIR$/prog.py" />
-    <entry file="file://$PROJECT_DIR$/__tentativi_stagionali__.py">
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__32_2010_1626.tif" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__17_1995_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__2_1980_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__24_2002_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__9_1987_1626.tif" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__10_1988_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__27_2005_1626.tif" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__22_2000_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__11_1989_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__18_1996_1626.tif" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__33_2011_1626.tif" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__23_2001_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__11_1989_1626.tif" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__19_1997_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__35_2013_1626.tif" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__31_2009_1626.tif" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__10_1988_1626.tif" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__12_1990_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__1_1979_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__23_2001_1626.tif" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__20_1998_1626.tif" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__36_2014_1626.tif" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__26_2004_1626.tif" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__25_2003_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__26_2004_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__13_1991_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__27_2005_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__14_1992_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__20_1998_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__28_2006_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__18_1996_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__3_1981_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__16_1994_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__15_1993_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__21_1999_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/5_tests/10_giorni/cumulated/cum_GLOBAL__29_2007_1626.tif.ovr" />
+    <entry file="file://$PROJECT_DIR$/GlobalAnomaliesProject3Months.py" />
+    <entry file="file://$PROJECT_DIR$/0_generated_date_files/req_31_08_11_20142016.txt" />
+    <entry file="file://$PROJECT_DIR$/different_statistics_from_grib.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4643">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="561">
+          <caret line="268" column="32" selection-start-line="268" selection-start-column="32" selection-end-line="268" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/illo.csv" />
-    <entry file="file://$PROJECT_DIR$/test_distribuzione.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/aggregate_temporal.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/cap7_extract_polygon.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/cap7_rasterize.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/capiamo_dplyr.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/filtering.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/funzioni.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/inziamo_raster.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/map_algebra.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/merge_rasters.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/primo_raster_6chap.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/quinta_vettori_haifa_intersezioni.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/raster_reprojection.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/raster_resample.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/terrain_analysis.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/terzo_vettori.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/timeseries.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/prima_vettori.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/pgres_connect.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/matrici queste sconosciute.R" />
-    <entry file="file://$PROJECT_DIR$/geospatial_analysis-master/leggiRegioniItaliane.R" />
-    <entry file="file://$PROJECT_DIR$/4_anomalies_3_minus_2/anm_GLOBAL_2806_07_08_19792015.tif.aux.xml" />
-    <entry file="file://$PROJECT_DIR$/4_anomalies_3_minus_2/anm_GLOBAL_2806_07_08_19792015.tif.ovr" />
-    <entry file="file://$PROJECT_DIR$/0_generated_date_files/req_0208_08_20102016.txt" />
-    <entry file="file://$PROJECT_DIR$/5_tests/wfp_data_analysis_anomalies.py">
+    <entry file="file://$PROJECT_DIR$/0_generated_date_files/req_30_05_07_20162017.txt" />
+    <entry file="file://$PROJECT_DIR$/ECMWFControlCenterMod.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="131" column="42" selection-start-line="131" selection-start-column="4" selection-end-line="131" selection-end-column="42" />
+        <state relative-caret-position="357">
+          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py" />
-    <entry file="file://$PROJECT_DIR$/test.out" />
+    <entry file="file://$PROJECT_DIR$/0_generated_date_files/req_2232_8_19792015.txt" />
+    <entry file="file://$PROJECT_DIR$/0_generated_date_files/req_2503_08_09_19792016.txt" />
+    <entry file="file://$PROJECT_DIR$/0_generated_date_files/req_2535_8_19792015.txt" />
     <entry file="file://$PROJECT_DIR$/calculate_time_window_date.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
+        <state relative-caret-position="-102">
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/climate_file.out" />
-    <entry file="file://$PROJECT_DIR$/clip_data_current.out" />
-    <entry file="file://$PROJECT_DIR$/5_tests/wfp_data_analysis_anomalies_r1.py">
+    <entry file="file://$PROJECT_DIR$/0_generated_date_files/req_2605_0809_19792015.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        <state relative-caret-position="0">
+          <caret line="0" column="17" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/ArcGIS10.2/Lib/site-packages/osgeo/gdal.py">
+    <entry file="file://$PROJECT_DIR$/exportToHTML/GlobalAnomaliesProject.py.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="389" column="0" selection-start-line="389" selection-start-column="0" selection-end-line="389" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ecmwf_data_analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="207" column="37" selection-start-line="207" selection-start-column="28" selection-end-line="207" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/extract_total_precipitation_hres.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="323">
+          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ECMWFControlCenter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+        <state relative-caret-position="3570">
+          <caret line="220" column="0" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wfp_data_analysis_anomalies.py">
+    <entry file="file://$PROJECT_DIR$/ecmwf_data_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="228" column="35" selection-start-line="228" selection-start-column="35" selection-end-line="228" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/unnecessary_math.py" />
-    <entry file="file://$PROJECT_DIR$/test_um_unittest.py" />
-    <entry file="file://$PROJECT_DIR$/2_mean_from_gribs/mean_GLOBAL_1019_08_19792015.tif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_global.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wfp_data_analysis_anomalies_r1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="52" column="50" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3_ecmwf_ftp_wfp/TP_08110821.tif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="68">
-            <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/4_anomalies_3_minus_2/anm_GLOBAL_1222_8_19792014.tif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/different_statistics_from_grib.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="161" column="37" selection-start-line="161" selection-start-column="37" selection-end-line="161" selection-end-column="37" />
-          <folding>
-            <element signature="e#249#2730#0" expanded="false" />
-            <element signature="e#2765#4187#0" expanded="false" />
-            <element signature="e#4228#5847#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="221">
+          <caret line="142" column="6" selection-start-line="142" selection-start-column="6" selection-end-line="142" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GlobalAnomaliesProject.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+        <state relative-caret-position="248">
+          <caret line="348" column="33" selection-start-line="348" selection-start-column="33" selection-end-line="348" selection-end-column="33" />
           <folding>
-            <element signature="e#2509#2765#0" expanded="false" />
-            <element signature="e#2799#2944#0" expanded="false" />
-            <element signature="e#3808#3912#0" expanded="false" />
-            <element signature="e#3971#4574#0" expanded="false" />
-            <element signature="e#6413#8721#0" expanded="false" />
-            <element signature="e#8778#13423#0" expanded="false" />
-            <element signature="e#8806#9069#0" expanded="false" />
-            <element signature="e#9126#9576#0" expanded="false" />
-            <element signature="e#9643#10023#0" expanded="false" />
-            <element signature="e#10069#10332#0" expanded="false" />
-            <element signature="e#10381#11356#0" expanded="false" />
-            <element signature="e#11479#12046#0" expanded="false" />
-            <element signature="e#12089#12840#0" expanded="false" />
-            <element signature="e#12907#13423#0" expanded="false" />
-            <element signature="e#13494#15070#0" expanded="false" />
-            <element signature="e#13522#13729#0" expanded="false" />
-            <element signature="e#13782#15070#0" expanded="false" />
-            <element signature="e#15105#16051#0" expanded="false" />
+            <element signature="e#69#84#0" expanded="true" />
+            <element signature="e#6481#8789#0" expanded="false" />
+            <element signature="e#10137#10400#0" expanded="false" />
+            <element signature="e#10449#11424#0" expanded="false" />
+            <element signature="e#11547#12114#0" expanded="false" />
+            <element signature="e#12157#12908#0" expanded="false" />
+            <element signature="e#12975#13491#0" expanded="false" />
+            <element signature="e#15176#16122#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wfp_data_analysis_anomalies_r1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="145" column="74" selection-start-line="145" selection-start-column="74" selection-end-line="145" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

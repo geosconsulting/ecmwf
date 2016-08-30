@@ -26,16 +26,12 @@ class AppECMWF:
         self.password = "geonode"
 
         self.now = datetime.datetime.now()
-        self.mese_inizio = self.now.month
+        # string_date = "2016-05-01"
+        # self.now = datetime.datetime.strptime(string_date, "%Y-%m-%d")
 
-        # AREA MANIPOLAZIONE GIORNO NECESSARIO PER ANNI BISESTILI
-        # from datetime import timedelta
-        # giorno_aggiunta = timedelta(days=1)
-        # self.data_modificata = self.now.date() + giorno_aggiunta
-        # self.starting_day = self.data_modificata.day
+        self.mese_inizio = self.now.month
         self.giorno_inizio = self.now.day
 
-        #Define our connection string
         try:
             connection_string = "host=%s dbname=%s user=%s password=%s" % (self.host,
                                                                            self.dbname,
@@ -99,7 +95,6 @@ class AppECMWF:
             else:
                 self.box_adm0.config(state='disabled')
                 self.button_add_countries.config(state='disabled')
-
         self.button_latest_forecasts = Button(finestra, text="Calculate Mean",
                                               fg="blue",
                                               command=self.calcola_mean_from_historical_forecasts)
@@ -108,16 +103,13 @@ class AppECMWF:
         self.button_avg_forecasts = Button(finestra, text="Extract Latest", fg="red",
                                            command=self.extract_precipitation_from_last_forecast)
         self.button_avg_forecasts.place(x=500, y=3, width=110, height=25)
-
         self.area_oggi = Entry(finestra, background="white", foreground="red",)
         self.area_oggi.place(x=450, y=30, width=150, height=25)
-
-        # self.area_oggi.insert(INSERT, str(self.data_modificata))
         self.area_oggi.insert(INSERT, str(self.now.date()))
 
-        #Scelta anni minimo massimo per analisi corrente
         in_che_anno_siamo = self.now.year
-        lista_anni_correnti = list(range(1979, in_che_anno_siamo))
+        lista_anni_correnti = list(range(1979, in_che_anno_siamo+1))
+        print lista_anni_correnti
 
         self.days_check = IntVar()
         self.check_3 = Radiobutton(finestra, text="3 Days", value=3, variable=self.days_check)
@@ -131,21 +123,23 @@ class AppECMWF:
         self.check_30 = Radiobutton(finestra, text="30 Days", value=30, variable=self.days_check)
         self.check_30.place(x=450, y=100, width=60, height=25)
         # self.check_46 = Radiobutton(finestra, text="46 Days", value=46, variable=self.days_check)
-        self.check_46 = Radiobutton(finestra, text="46 Days", value=46, variable=self.days_check)
+        self.check_46 = Radiobutton(finestra, text="90 Days", value=90, variable=self.days_check)
         self.check_46.place(x=520, y=100, width=60, height=25)
 
         self.box_value_minYear_current = StringVar()
-        self.box_minYear_current = ttk.Combobox(finestra, textvariable= [], width=7)
+        self.box_minYear_current = ttk.Combobox(finestra, textvariable=[], width=7)
         self.box_minYear_current['values'] = lista_anni_correnti
         self.box_minYear_current.place(x=450, y=125, width=155)
 
         self.box_value_maxYear_current = StringVar()
-        self.box_maxYear_current = ttk.Combobox(finestra, textvariable = [],width=7)
+        self.box_maxYear_current = ttk.Combobox(finestra, textvariable=[], width=7)
         self.box_maxYear_current['values'] = lista_anni_correnti
         self.box_maxYear_current.place(x=450, y=150, width=155)
 
-        self.button_anomalies = Button(finestra, text="Generate Anomaly Raster", fg="red",
-                                       command= self.taglia_e_sottrai)
+        self.button_anomalies = Button(finestra,
+                                       text="Generate Anomaly Raster",
+                                       fg="red",
+                                       command=self.taglia_e_sottrai)
         self.button_anomalies.place(x=450, y=350, width=150, height=25)
 
         finestra.mainloop()
@@ -206,6 +200,8 @@ class AppECMWF:
 
         file_date = calculate_time_window_date.crea_file_avanzato(range_anni_scelti, date_per_creazione_files)
 
+
+        # Calcola il bbox chiamando la funzione subito sopra questa
         self.calcola_bbox_parteISO()
 
         parte_iso = ''.join(self.parte_3lettere_per_file_grib)

@@ -47,6 +47,7 @@ def fetch_ECMWF_data_global(file_output, time_frame):
 
 def fetch_ECMWF_data_extent(file_output, time_frame, dict_area_richiesta):
 
+    print dict_area_richiesta
     date = open(time_frame)
     time_frame_json = json.load(date)
 

@@ -143,7 +143,7 @@ def taglio_raster_corrente_su_area_mean_partial(file_current_path, ulY, lrY, ulX
 
         data_climate = gdalnumeric.BandReadAsArray(banda_climate)
 
-        banda_sottrazione = np.subtract(clip_data_current, data_climate)
+        banda_sottrazione = np.subtract(clip_data_current, data_climate*10)
         nome_tif_anomalie = "4_anomalies_3_minus_2/" + str(climate_file_path).split("/")[1].split(".")[0].replace("mean","anm") + ".tif"
         print "nome anomalie generato %s " % nome_tif_anomalie
 
