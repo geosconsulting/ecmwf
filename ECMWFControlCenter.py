@@ -26,13 +26,8 @@ class AppECMWF:
         self.password = "geonode"
 
         self.now = datetime.datetime.now()
+        self.anno_inizio = self.now.year
         self.mese_inizio = self.now.month
-
-        # AREA MANIPOLAZIONE GIORNO NECESSARIO PER ANNI BISESTILI
-        # from datetime import timedelta
-        # giorno_aggiunta = timedelta(days=1)
-        # self.data_modificata = self.now.date() + giorno_aggiunta
-        # self.starting_day = self.data_modificata.day
         self.giorno_inizio = self.now.day
 
         #Define our connection string
@@ -89,6 +84,10 @@ class AppECMWF:
         self.button_add_countries = Button(finestra, text="Add Country", fg="blue",
                                            command=self.aggiungi_paese_alla_lista_di_processo)
         self.button_add_countries.place(x=210, y=3, width=80, height=25)
+
+        self.button_add_countries = Button(finestra, text="Delete Country", fg="blue",
+                                           command=lambda lb=self.listbox: self.listbox.delete(ANCHOR))
+        self.button_add_countries.place(x=290, y=3, width=90, height=25)
 
         def attiva_disattiva():
 
@@ -204,8 +203,8 @@ class AppECMWF:
                                                                              self.giorno_inizio,
                                                                              salto)
 
-        file_date = calculate_time_window_date.crea_file_avanzato(range_anni_scelti, date_per_creazione_files)
-
+        file_date = calculate_time_window_date.crea_file_avanzato(range_anni_scelti,
+                                                                  date_per_creazione_files)
         self.calcola_bbox_parteISO()
 
         parte_iso = ''.join(self.parte_3lettere_per_file_grib)
@@ -214,7 +213,9 @@ class AppECMWF:
         self.raster_file_mean_grib = "1_gribs_from_ecmwf/" + parte_iso + parte_date + ".grib"
         if os.path.isfile(self.raster_file_mean_grib):
             self.area_messaggi.insert(INSERT, "Grib file exists")
-            self.file_media = ecmwf_data_analysis.genera_means(self.raster_file_mean_grib)
+            self.file_media = ecmwf_data_analysis.genera_means(self.raster_file_mean_grib,
+                                                                    parte_iso,
+                                                                    parte_date)
             self.area_messaggi.insert(INSERT, "File Mean Generated in %s " % self.file_media)
         else:
             self.area_messaggi.insert(INSERT, "Grib file does not exist")
@@ -229,7 +230,7 @@ class AppECMWF:
 
         self.listbox.delete(0, END)
         messaggioFTP, files_disponibili = extract_total_precipitation_hres.FtpConnectionFilesGathering()
-        stringhe_da_cercare = calculate_time_window_date.controlla_date_ftp(self.box_minYear_current.get(),
+        stringhe_da_cercare = calculate_time_window_date.controlla_date_ftp(self.anno_inizio,
                                                                             str(self.mese_inizio),
                                                                             self.giorno_inizio,
                                                                             self.days_check.get())

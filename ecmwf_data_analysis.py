@@ -206,10 +206,10 @@ def genera_gribs(file_date, area_bbox, raster_file):
     # fetch_ECMWF_data_extent(raster_file, time_frame, area_richiesta)
     pass
 
+
 def genera_means(file_path, parte_iso, parte_date):
 
         print "ECMWF file exists calculating statistics"
-        print "Change the name of the output grib file for fetching new data"
         nome_tif_mean = "2_mean_from_gribs/mean_" + parte_iso + parte_date + ".tif"
 
         ecmfwf_file_asRaster = gdal.Open(file_path)

@@ -85,7 +85,6 @@ class HistoricalTrend(GlobalAnomaliesProject):
         self.tif_mean_file = self.MEAN_DIR + "/mean_" + self.GLOBAL_PREFIX + self.dates_part + ".tif"
         self.file_climate_path = self.tif_mean_file
 
-
     def parameters_gathering(self):
 
         mese_str = str(self.starting_month)

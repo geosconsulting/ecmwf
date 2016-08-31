@@ -29,8 +29,6 @@ def raccolta_parametri(iso):
         mese = "0" + mese
     giorno_inizio = input("Starting Day: ")
     numero_giorni = input("Number of days: ")
-    # finale_day = starting_day + 7
-    # finale_day = starting_day + 8
     giorno_fine = giorno_inizio + numero_giorni
 
     return anno_minimo, anno_massimo, numero_anni, mese, giorno_inizio, giorno_fine, range_anni_scelti, numero_giorni
@@ -43,13 +41,6 @@ def controlla_date(anno_inizio, mese_inizio, giorno_inizio, salto):
 
     salto_giorni = datetime.timedelta(days=salto+1)
     data_finale = data_iniziale + salto_giorni
-
-     # MENO LEGGIBILE
-    # lista_giorni_comprehension = [initial_date + leap_days_date_format for x in range(0, 8)]
-    # print lista_giorni
-
-    # PANDAS NON RIDUCE LA COMPLESSITA
-    # datelist = pd.date_range(pd.datetime(int(anno_inizio), int(starting_month), int(starting_day)), periods=8).tolist()
 
     giorno_data_iniziale = '{:02d}'.format(data_iniziale.day)
     giorno_data_finale = '{:02d}'.format(data_finale.day)
@@ -101,7 +92,7 @@ def crea_file(anno_minimo, numero_anni, mese, giorno_inizio, giorno_fine):
     seconda_parte = str(anno_minimo) + str(max(lista_anni))
     file_path = '0_generate_date_file/' + "req_" + str(prima_parte) + "_" + str(mese) + "_" + str(seconda_parte) + ".txt"
     if os.path.isfile(file_path):
-        print "FILE DATES ESISTENTE"
+        print "File dates exists"
         return file_path
 
     nuovo = open(file_path, mode='w')
